@@ -23,8 +23,8 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.entity.SoftDelete;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.WindowManager;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.WindowManagerProvider;
 import com.haulmont.cuba.gui.components.actions.BaseAction;
 import com.haulmont.cuba.gui.config.WindowConfig;
@@ -295,7 +295,7 @@ public interface PickerField<V extends Entity> extends Field<V>, ActionsHolder, 
                     windowAlias = windowConfig.getAvailableLookupScreenId(metaClass);
                 }
 
-                WindowManager wm;
+                WindowManagerImpl wm;
                 Window window = ComponentsHelper.getWindow(pickerField);
                 if (window == null) {
                     LoggerFactory.getLogger(PickerField.class).warn("Please specify Frame for PickerField");
@@ -605,7 +605,7 @@ public interface PickerField<V extends Entity> extends Field<V>, ActionsHolder, 
             if (entity == null)
                 return;
 
-            WindowManager wm;
+            WindowManagerImpl wm;
             Window window = ComponentsHelper.getWindow(pickerField);
             if (window == null) {
                 throw new IllegalStateException("Please specify Frame for EntityLinkField");

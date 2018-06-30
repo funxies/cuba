@@ -15,23 +15,25 @@
  *
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
+import com.haulmont.cuba.gui.WindowContext;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.Frame;
 
 import java.util.Map;
 
 public class WindowContextImpl extends FrameContextImpl implements WindowContext {
 
-    private WindowManager.OpenType openType;
+    private WindowManagerImpl.OpenType openType;
 
-    public WindowContextImpl(Frame window, WindowManager.OpenType openType, Map<String, Object> params) {
+    public WindowContextImpl(Frame window, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         super(window, params);
         this.openType = openType;
     }
 
     @Override
-    public WindowManager.OpenType getOpenType() {
+    public WindowManagerImpl.OpenType getOpenType() {
         return openType;
     }
 }

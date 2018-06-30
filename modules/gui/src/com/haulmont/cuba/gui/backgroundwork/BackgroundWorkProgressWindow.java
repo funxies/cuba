@@ -17,7 +17,7 @@
 
 package com.haulmont.cuba.gui.backgroundwork;
 
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.executors.BackgroundTask;
 import com.haulmont.cuba.gui.executors.BackgroundTaskHandler;

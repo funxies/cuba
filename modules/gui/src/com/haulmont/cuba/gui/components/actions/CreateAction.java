@@ -21,7 +21,7 @@ import com.haulmont.chile.core.model.MetaProperty;
 import com.haulmont.cuba.client.ClientConfig;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.config.WindowConfig;
 import com.haulmont.cuba.gui.data.*;
@@ -55,7 +55,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
 
     public static final String ACTION_ID = ListActionType.CREATE.getId();
 
-    protected WindowManager.OpenType openType;
+    protected WindowManagerImpl.OpenType openType;
 
     protected String windowId;
 
@@ -106,7 +106,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
      * @param target    component containing this action
      * @param openType  how to open the editor screen
      */
-    public static CreateAction create(ListComponent target, WindowManager.OpenType openType) {
+    public static CreateAction create(ListComponent target, WindowManagerImpl.OpenType openType) {
         return AppBeans.getPrototype("cuba_CreateAction", target, openType);
     }
 
@@ -116,7 +116,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
      * @param openType  how to open the editor screen
      * @param id        action name
      */
-    public static CreateAction create(ListComponent target, WindowManager.OpenType openType, String id) {
+    public static CreateAction create(ListComponent target, WindowManagerImpl.OpenType openType, String id) {
         return AppBeans.getPrototype("cuba_CreateAction", target, openType, id);
     }
 
@@ -125,7 +125,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
      * @param target    component containing this action
      */
     public CreateAction(ListComponent target) {
-        this(target, WindowManager.OpenType.THIS_TAB, ACTION_ID);
+        this(target, WindowManagerImpl.OpenType.THIS_TAB, ACTION_ID);
     }
 
     /**
@@ -133,7 +133,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
      * @param target    component containing this action
      * @param openType  how to open the editor screen
      */
-    public CreateAction(ListComponent target, WindowManager.OpenType openType) {
+    public CreateAction(ListComponent target, WindowManagerImpl.OpenType openType) {
         this(target, openType, ACTION_ID);
     }
 
@@ -143,7 +143,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
      * @param openType  how to open the editor screen
      * @param id        action name
      */
-    public CreateAction(ListComponent target, WindowManager.OpenType openType, String id) {
+    public CreateAction(ListComponent target, WindowManagerImpl.OpenType openType, String id) {
         super(id, null);
 
         this.target = target;
@@ -331,7 +331,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
      * @return  editor screen open type
      */
     @Override
-    public WindowManager.OpenType getOpenType() {
+    public WindowManagerImpl.OpenType getOpenType() {
         return openType;
     }
 
@@ -339,7 +339,7 @@ public class CreateAction extends BaseAction implements Action.HasOpenType, Acti
      * @param openType  editor screen open type
      */
     @Override
-    public void setOpenType(WindowManager.OpenType openType) {
+    public void setOpenType(WindowManagerImpl.OpenType openType) {
         this.openType = openType;
     }
 

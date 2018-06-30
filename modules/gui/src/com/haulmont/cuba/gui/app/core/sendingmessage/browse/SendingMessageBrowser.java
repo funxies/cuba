@@ -47,7 +47,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.haulmont.cuba.gui.WindowManager.OpenType;
+import static com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 
 public class SendingMessageBrowser extends AbstractWindow {
 

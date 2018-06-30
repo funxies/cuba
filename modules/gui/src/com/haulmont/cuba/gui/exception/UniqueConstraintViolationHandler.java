@@ -19,7 +19,7 @@ package com.haulmont.cuba.gui.exception;
 
 import com.haulmont.cuba.client.ClientConfig;
 import com.haulmont.cuba.core.global.Messages;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.Frame;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.Ordered;
@@ -44,7 +44,7 @@ public class UniqueConstraintViolationHandler implements GenericExceptionHandler
     protected ClientConfig clientConfig;
 
     @Override
-    public boolean handle(Throwable exception, WindowManager windowManager) {
+    public boolean handle(Throwable exception, WindowManagerImpl windowManager) {
         Throwable t = exception;
         try {
             while (t != null) {
@@ -59,7 +59,7 @@ public class UniqueConstraintViolationHandler implements GenericExceptionHandler
         }
     }
 
-    protected boolean doHandle(Throwable throwable, WindowManager windowManager) {
+    protected boolean doHandle(Throwable throwable, WindowManagerImpl windowManager) {
         Pattern pattern = clientConfig.getUniqueConstraintViolationPattern();
         String constraintName = "";
 

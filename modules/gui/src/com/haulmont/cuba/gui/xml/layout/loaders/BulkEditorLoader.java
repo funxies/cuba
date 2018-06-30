@@ -20,7 +20,7 @@ package com.haulmont.cuba.gui.xml.layout.loaders;
 import com.google.common.base.Splitter;
 import com.haulmont.bali.util.Dom4j;
 import com.haulmont.cuba.gui.GuiDevelopmentException;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.BulkEditor;
 import com.haulmont.cuba.gui.components.Component;
 import com.haulmont.cuba.gui.components.Field;
@@ -91,7 +91,7 @@ public class BulkEditorLoader extends AbstractComponentLoader<BulkEditor> {
 
         String openType = element.attributeValue("openType");
         if (StringUtils.isNotEmpty(openType)) {
-            resultComponent.setOpenType(WindowManager.OpenType.valueOf(openType));
+            resultComponent.setOpenType(WindowManagerImpl.OpenType.valueOf(openType));
         }
 
         String exclude = element.attributeValue("exclude");

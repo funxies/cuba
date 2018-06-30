@@ -24,7 +24,6 @@ import com.haulmont.cuba.gui.components.Frame;
 import com.haulmont.cuba.gui.logging.UIPerformanceLogger;
 import com.haulmont.cuba.gui.xml.layout.ComponentLoader;
 import com.haulmont.cuba.gui.xml.layout.LayoutLoader;
-import com.haulmont.cuba.gui.xml.layout.LayoutLoaderConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Element;
 import org.perf4j.StopWatch;
@@ -54,7 +53,7 @@ public class RuntimePropertiesFrameLoader extends ContainerLoader<Frame> {
         }
         frameId = screenPath;
 
-        LayoutLoader layoutLoader = new LayoutLoader(context, factory, LayoutLoaderConfig.getFrameLoaders());
+        LayoutLoader layoutLoader = new LayoutLoader(context, factory, layoutLoaderConfig);
         layoutLoader.setLocale(getLocale());
         layoutLoader.setMessagesPack(getMessagesPack());
 
@@ -82,7 +81,7 @@ public class RuntimePropertiesFrameLoader extends ContainerLoader<Frame> {
 
         loadAlign(resultComponent, element);
 
-        loadHeight(resultComponent, element, ComponentsHelper.getComponentHeigth(resultComponent));
+        loadHeight(resultComponent, element, ComponentsHelper.getComponentHeight(resultComponent));
         loadWidth(resultComponent, element, ComponentsHelper.getComponentWidth(resultComponent));
 
         String src = element.attributeValue("src");

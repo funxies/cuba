@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import com.haulmont.bali.util.Dom4j;
 import com.haulmont.cuba.core.global.Resources;

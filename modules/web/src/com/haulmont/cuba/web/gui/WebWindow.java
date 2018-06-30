@@ -41,9 +41,10 @@ import com.haulmont.cuba.gui.events.sys.UiEventsMulticaster;
 import com.haulmont.cuba.gui.icons.CubaIcon;
 import com.haulmont.cuba.gui.icons.Icons;
 import com.haulmont.cuba.gui.settings.Settings;
+import com.haulmont.cuba.gui.sys.TestIdManager;
 import com.haulmont.cuba.web.AppUI;
 import com.haulmont.cuba.web.WebConfig;
-import com.haulmont.cuba.web.WebWindowManager;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.haulmont.cuba.web.gui.components.WebComponentsHelper;
 import com.haulmont.cuba.web.gui.components.WebFrameActionsHolder;
 import com.haulmont.cuba.web.gui.components.WebWrapperUtils;
@@ -107,7 +108,7 @@ public class WebWindow implements Window, Component.Wrapper,
 
     protected Runnable doAfterClose;
 
-    protected WebWindowManager windowManager;
+    protected WebWindowManagerImpl windowManager;
 
     protected WindowDelegate delegate;
 
@@ -434,13 +435,13 @@ public class WebWindow implements Window, Component.Wrapper,
     }
 
     @Override
-    public WebWindowManager getWindowManager() {
+    public WebWindowManagerImpl getWindowManager() {
         return windowManager;
     }
 
     @Override
-    public void setWindowManager(WindowManager windowManager) {
-        this.windowManager = (WebWindowManager) windowManager;
+    public void setWindowManager(WindowManagerImpl windowManager) {
+        this.windowManager = (WebWindowManagerImpl) windowManager;
     }
 
     @Override
@@ -451,67 +452,67 @@ public class WebWindow implements Window, Component.Wrapper,
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openWindow(windowAlias, openType, params);
     }
 
     @Override
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType) {
         return delegate.openWindow(windowAlias, openType);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType) {
         return delegate.openEditor(item, openType);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openEditor(item, openType, params);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         return delegate.openEditor(item, openType, params, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         return delegate.openEditor(windowAlias, item, openType, params, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openEditor(windowAlias, item, openType, params);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Datasource parentDs) {
         return delegate.openEditor(windowAlias, item, openType, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType) {
         return delegate.openEditor(windowAlias, item, openType);
     }
 
     @Override
-    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         return delegate.openLookup(entityClass, handler, openType);
     }
 
     @Override
-    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openLookup(entityClass, handler, openType, params);
     }
 
     @Override
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openLookup(windowAlias, handler, openType, params);
     }
 
     @Override
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         return delegate.openLookup(windowAlias, handler, openType);
     }
 

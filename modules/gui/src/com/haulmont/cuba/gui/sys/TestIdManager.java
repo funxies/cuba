@@ -15,7 +15,7 @@
  *
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;

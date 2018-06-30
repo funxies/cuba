@@ -17,7 +17,7 @@
 package com.haulmont.cuba.gui.exception;
 
 import com.haulmont.cuba.core.global.Messages;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.Frame;
 import org.springframework.core.Ordered;
 
@@ -29,7 +29,6 @@ import java.util.regex.Pattern;
 
 /**
  * Handles a JPA optimistic lock exception.
- *
  */
 @Component("cuba_OptimisticExceptionHandler")
 public class OptimisticExceptionHandler extends AbstractGenericExceptionHandler implements Ordered {
@@ -42,7 +41,7 @@ public class OptimisticExceptionHandler extends AbstractGenericExceptionHandler 
     }
 
     @Override
-    protected void doHandle(String className, String message, @Nullable Throwable throwable, WindowManager windowManager) {
+    protected void doHandle(String className, String message, @Nullable Throwable throwable, WindowManagerImpl windowManager) {
         Pattern pattern = Pattern.compile("Class> (.+)");
         Matcher matcher = pattern.matcher(message);
         String entityClassName = "";

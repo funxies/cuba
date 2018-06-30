@@ -27,7 +27,7 @@ import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.core.global.View;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.EntityLinkField;
 import com.haulmont.cuba.gui.components.Frame;
 import com.haulmont.cuba.gui.components.ListComponent;
@@ -52,7 +52,7 @@ public class WebEntityLinkField<V> extends WebAbstractField<CubaButtonField, V> 
     protected EntityLinkClickHandler clickHandler;
 
     protected String screen;
-    protected WindowManager.OpenType screenOpenType = WindowManager.OpenType.THIS_TAB;
+    protected WindowManagerImpl.OpenType screenOpenType = WindowManagerImpl.OpenType.THIS_TAB;
     protected ScreenCloseListener screenCloseListener;
     protected Map<String, Object> screenParams;
 
@@ -196,12 +196,12 @@ public class WebEntityLinkField<V> extends WebAbstractField<CubaButtonField, V> 
     }
 
     @Override
-    public WindowManager.OpenType getScreenOpenType() {
+    public WindowManagerImpl.OpenType getScreenOpenType() {
         return screenOpenType;
     }
 
     @Override
-    public void setScreenOpenType(WindowManager.OpenType screenOpenType) {
+    public void setScreenOpenType(WindowManagerImpl.OpenType screenOpenType) {
         this.screenOpenType = screenOpenType;
     }
 
@@ -240,7 +240,7 @@ public class WebEntityLinkField<V> extends WebAbstractField<CubaButtonField, V> 
             return;
         }
 
-        WindowManager wm;
+        WindowManagerImpl wm;
         Window window = ComponentsHelper.getWindow(this);
         if (window == null) {
             throw new IllegalStateException("Please specify Frame for EntityLinkField");

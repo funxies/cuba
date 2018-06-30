@@ -27,7 +27,7 @@ import com.haulmont.cuba.core.global.filter.GroovyGenerator;
 import com.haulmont.cuba.core.global.filter.SecurityJpqlGenerator;
 import com.haulmont.cuba.core.sys.jpql.ErrorRec;
 import com.haulmont.cuba.core.sys.jpql.JpqlSyntaxException;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowManagerProvider;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.autocomplete.JpqlSuggestionFactory;
@@ -306,7 +306,7 @@ public class ConstraintEditor extends AbstractEditor<Constraint> {
         params.put("hideDynamicAttributes", constraint.getCheckType() != ConstraintCheckType.DATABASE);
         params.put("hideCustomConditions", constraint.getCheckType() != ConstraintCheckType.DATABASE);
 
-        FilterEditor filterEditor = (FilterEditor) windowManagerProvider.get().openWindow(windowInfo, WindowManager.OpenType.DIALOG, params);
+        FilterEditor filterEditor = (FilterEditor) windowManagerProvider.get().openWindow(windowInfo, WindowManagerImpl.OpenType.DIALOG, params);
         filterEditor.addCloseListener(actionId -> {
             if (!COMMIT_ACTION_ID.equals(actionId)) return;
             FilterParser filterParser1 = AppBeans.get(FilterParser.class);

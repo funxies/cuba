@@ -17,7 +17,7 @@
 
 package com.haulmont.cuba.gui.components;
 
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.security.entity.ConstraintOperationType;
 
 import java.util.List;
@@ -29,8 +29,8 @@ public interface BulkEditor extends Component, Component.HasCaption, Component.B
     String NAME = "bulkEditor";
     String PERMISSION = "cuba.gui.bulkEdit";
 
-    WindowManager.OpenType getOpenType();
-    void setOpenType(WindowManager.OpenType openType);
+    WindowManagerImpl.OpenType getOpenType();
+    void setOpenType(WindowManagerImpl.OpenType openType);
 
     String getExcludePropertiesRegex();
     void setExcludePropertiesRegex(String excludeRegex);

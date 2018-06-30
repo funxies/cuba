@@ -33,8 +33,8 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.entity.HasUuid;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.core.global.filter.SecurityJpqlGenerator;
-import com.haulmont.cuba.gui.ScreensHelper;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.sys.ScreensHelper;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.actions.BaseAction;
 import com.haulmont.cuba.gui.components.actions.RemoveAction;
@@ -394,7 +394,7 @@ public class AttributeEditor extends AbstractEditor<CategoryAttribute> {
         params.put("conditions", conditionsTree);
         params.put("useShortConditionForm", true);
 
-        FilterEditor filterEditor = (FilterEditor) openWindow("filterEditor", WindowManager.OpenType.DIALOG, params);
+        FilterEditor filterEditor = (FilterEditor) openWindow("filterEditor", WindowManagerImpl.OpenType.DIALOG, params);
         filterEditor.addCloseListener(actionId -> {
             if (!COMMIT_ACTION_ID.equals(actionId)) return;
             FilterParser filterParser1 = AppBeans.get(FilterParser.class);

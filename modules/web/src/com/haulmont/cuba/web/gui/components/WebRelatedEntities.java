@@ -21,8 +21,8 @@ import com.haulmont.chile.core.model.MetaClass;
 import com.haulmont.chile.core.model.MetaProperty;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Messages;
-import com.haulmont.cuba.gui.ScreensHelper;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.sys.ScreensHelper;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.Action;
 import com.haulmont.cuba.gui.components.ListComponent;
 import com.haulmont.cuba.gui.components.RelatedEntities;
@@ -43,7 +43,7 @@ import static com.haulmont.bali.util.Preconditions.checkNotNullArgument;
 public class WebRelatedEntities extends WebPopupButton implements RelatedEntities {
 
     protected ListComponent listComponent;
-    protected WindowManager.OpenType openType = WindowManager.OpenType.THIS_TAB;
+    protected WindowManagerImpl.OpenType openType = WindowManagerImpl.OpenType.THIS_TAB;
     protected Map<String, PropertyOption> propertyOptions = new HashMap<>();
 
     protected String excludeRegex;
@@ -56,12 +56,12 @@ public class WebRelatedEntities extends WebPopupButton implements RelatedEntitie
     }
 
     @Override
-    public WindowManager.OpenType getOpenType() {
+    public WindowManagerImpl.OpenType getOpenType() {
         return openType;
     }
 
     @Override
-    public void setOpenType(WindowManager.OpenType openType) {
+    public void setOpenType(WindowManagerImpl.OpenType openType) {
         checkNotNullArgument(openType);
 
         this.openType = openType;

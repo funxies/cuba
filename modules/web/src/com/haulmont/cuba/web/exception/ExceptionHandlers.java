@@ -20,7 +20,7 @@ import com.haulmont.bali.util.ReflectionHelper;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.gui.exception.GenericExceptionHandler;
 import com.haulmont.cuba.web.App;
-import com.haulmont.cuba.web.WebWindowManager;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.vaadin.server.ErrorEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,7 +98,7 @@ public class ExceptionHandlers {
                 return;
         }
 
-        WebWindowManager wm = app.getWindowManager();
+        WebWindowManagerImpl wm = app.getWindowManager();
         if (wm != null) {
             for (GenericExceptionHandler handler : genericHandlers) {
                 if (handler.handle(event.getThrowable(), wm))

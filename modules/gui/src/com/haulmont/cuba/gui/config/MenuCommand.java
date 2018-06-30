@@ -21,9 +21,9 @@ import com.haulmont.cuba.core.app.DataService;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.core.sys.AppContext;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowManager.OpenMode;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.WindowManagerProvider;
 import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.components.Window;
@@ -157,7 +157,7 @@ public class MenuCommand {
 
             final String id = windowInfo.getId();
 
-            WindowManager wm = AppBeans.get(WindowManagerProvider.class).get();
+            WindowManagerImpl wm = AppBeans.get(WindowManagerProvider.class).get();
             if (id.endsWith(Window.CREATE_WINDOW_SUFFIX)
                     || id.endsWith(Window.EDITOR_WINDOW_SUFFIX)) {
                 Entity entityItem;

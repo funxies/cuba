@@ -25,6 +25,8 @@ import java.util.function.Consumer;
 
 /**
  * EventPublisher class implementing the event listening model with concrete event classes.
+ *
+ * todo Rename to EventHub
  */
 @NotThreadSafe
 public class EventPublisher {

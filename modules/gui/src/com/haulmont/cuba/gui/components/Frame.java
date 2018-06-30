@@ -19,7 +19,7 @@ package com.haulmont.cuba.gui.components;
 import com.haulmont.bali.util.Preconditions;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.gui.FrameContext;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.data.Datasource;
 import com.haulmont.cuba.gui.data.DsContext;
 
@@ -116,7 +116,7 @@ public interface Frame
      * @param params      parameters to pass to {@code init()} method of the screen's controller
      * @return created window
      */
-    Window openWindow(String windowAlias, WindowManager.OpenType openType, Map<String, Object> params);
+    Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType, Map<String, Object> params);
 
     /**
      * Open a simple screen.
@@ -125,7 +125,7 @@ public interface Frame
      * @param openType    how to open the screen
      * @return created window
      */
-    Window openWindow(String windowAlias, WindowManager.OpenType openType);
+    Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType);
 
     /**
      * Open an edit screen for entity instance.
@@ -134,7 +134,7 @@ public interface Frame
      * @param openType    how to open the screen
      * @return created window
      */
-    Window.Editor openEditor(Entity item, WindowManager.OpenType openType);
+    Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType);
 
     /**
      * Open an edit screen for entity instance.
@@ -144,7 +144,7 @@ public interface Frame
      * @param params      parameters to pass to {@code init()} method of the screen's controller
      * @return created window
      */
-    Window.Editor openEditor(Entity item, WindowManager.OpenType openType,
+    Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType,
                              Map<String, Object> params);
 
     /**
@@ -157,7 +157,7 @@ public interface Frame
      *                    datasource instead of directly to database
      * @return created window
      */
-    Window.Editor openEditor(Entity item, WindowManager.OpenType openType,
+    Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType,
                              Map<String, Object> params, Datasource parentDs);
 
     /**
@@ -171,7 +171,7 @@ public interface Frame
      *                    datasource instead of directly to database
      * @return created window
      */
-    Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType,
+    Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType,
                              Map<String, Object> params, Datasource parentDs);
 
     /**
@@ -183,7 +183,7 @@ public interface Frame
      * @param params      parameters to pass to {@code init()} method of the screen's controller
      * @return created window
      */
-    Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType,
+    Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType,
                              Map<String, Object> params);
 
     /**
@@ -196,7 +196,7 @@ public interface Frame
      *                    datasource instead of directly to database
      * @return created window
      */
-    Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Datasource parentDs);
+    Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Datasource parentDs);
 
     /**
      * Open an edit screen.
@@ -206,7 +206,7 @@ public interface Frame
      * @param openType    how to open the screen
      * @return created window
      */
-    Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType);
+    Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType);
 
     /**
      * Open a lookup screen.
@@ -216,7 +216,7 @@ public interface Frame
      * @param openType    how to open the screen
      * @return created window
      */
-    Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType);
+    Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType);
 
     /**
      * Open a lookup screen.
@@ -227,7 +227,7 @@ public interface Frame
      * @param params      parameters to pass to {@code init()} method of the screen's controller
      * @return created window
      */
-    Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType,
+    Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType,
                              Map<String, Object> params);
 
     /**
@@ -239,7 +239,7 @@ public interface Frame
      * @param params      parameters to pass to {@code init()} method of the screen's controller
      * @return created window
      */
-    Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType,
+    Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType,
                                     Map<String, Object> params);
 
     /**
@@ -250,7 +250,7 @@ public interface Frame
      * @param openType    how to open the screen
      * @return created window
      */
-    Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType);
+    Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType);
 
     /**
      * Load a frame registered in {@code screens.xml} and optionally show it inside a parent component of this

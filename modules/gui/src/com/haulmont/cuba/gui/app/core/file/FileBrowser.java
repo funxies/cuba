@@ -19,7 +19,7 @@ package com.haulmont.cuba.gui.app.core.file;
 import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.global.AccessDeniedException;
 import com.haulmont.cuba.core.global.Security;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.components.AbstractLookup;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.Table;

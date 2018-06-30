@@ -21,7 +21,7 @@ import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.gui.components.Frame;
 import com.haulmont.cuba.web.App;
 import com.haulmont.cuba.web.AppUI;
-import com.haulmont.cuba.web.WebWindowManager;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.vaadin.server.ErrorEvent;
 import com.vaadin.ui.Window;
 import org.apache.commons.lang3.StringUtils;
@@ -102,7 +102,7 @@ public class DefaultExceptionHandler implements ExceptionHandler {
         if (rootCause == null) {
             rootCause = exception;
         }
-        WebWindowManager windowManager = app.getWindowManager();
+        WebWindowManagerImpl windowManager = app.getWindowManager();
         if (windowManager != null) {
             windowManager.showNotification(
                     messages.getMainMessage("exceptionDialog.caption", app.getLocale()),

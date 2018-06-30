@@ -21,8 +21,8 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.validation.groups.UiCrossFieldChecks;
 import com.haulmont.cuba.gui.DialogOptions;
 import com.haulmont.cuba.gui.WindowContext;
-import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.WindowManager.OpenMode;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.mainwindow.AppWorkArea;
 import com.haulmont.cuba.gui.components.mainwindow.FoldersPane;
 import com.haulmont.cuba.gui.components.mainwindow.UserIndicator;
@@ -208,12 +208,12 @@ public interface Window extends Frame, Component.HasCaption, Component.HasIcon {
     /**
      * @return window manager instance
      */
-    WindowManager getWindowManager();
+    WindowManagerImpl getWindowManager();
 
     /**
      * INTERNAL. Don't call from application code.
      */
-    void setWindowManager(WindowManager windowManager);
+    void setWindowManager(WindowManagerImpl windowManager);
 
     /**
      * @return dialog options of window. Options will be applied only if window opened with {@link OpenMode#DIALOG}.
@@ -614,6 +614,8 @@ public interface Window extends Frame, Component.HasCaption, Component.HasIcon {
      * Interface implemented by screen controllers which are not themselves windows,
      * but has {@link Window} interface and delegate work to wrapped real window.
      */
+    // todo for removal
+    @Deprecated
     interface Wrapper {
         Window getWrappedWindow();
     }

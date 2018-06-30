@@ -26,7 +26,7 @@ import com.haulmont.cuba.gui.components.mainwindow.AppWorkArea;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import com.haulmont.cuba.web.App;
 import com.haulmont.cuba.web.WebConfig;
-import com.haulmont.cuba.web.WebWindowManager;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.haulmont.cuba.web.app.UserSettingsTools;
 import com.haulmont.cuba.web.gui.MainTabSheetMode;
 import com.haulmont.cuba.web.gui.ManagedMainTabSheetMode;
@@ -215,11 +215,11 @@ public class WebAppWorkArea extends WebAbstractComponent<CssLayout> implements A
             cubaTabSheet.addActionHandler(actionHandler);
 
             cubaTabSheet.setCloseOthersHandler(container -> {
-                WebWindowManager windowManager = App.getInstance().getWindowManager();
+                WebWindowManagerImpl windowManager = App.getInstance().getWindowManager();
                 windowManager.closeAllTabbedWindowsExcept(container);
             });
             cubaTabSheet.setCloseAllTabsHandler(container -> {
-                WebWindowManager windowManager = App.getInstance().getWindowManager();
+                WebWindowManagerImpl windowManager = App.getInstance().getWindowManager();
                 windowManager.closeAllTabbedWindows();
             });
         } else {
@@ -238,11 +238,11 @@ public class WebAppWorkArea extends WebAbstractComponent<CssLayout> implements A
             cubaManagedTabSheet.addActionHandler(actionHandler);
 
             cubaManagedTabSheet.setCloseOthersHandler(container -> {
-                WebWindowManager windowManager = App.getInstance().getWindowManager();
+                WebWindowManagerImpl windowManager = App.getInstance().getWindowManager();
                 windowManager.closeAllTabbedWindowsExcept(container);
             });
             cubaManagedTabSheet.setCloseAllTabsHandler(container -> {
-                WebWindowManager windowManager = App.getInstance().getWindowManager();
+                WebWindowManagerImpl windowManager = App.getInstance().getWindowManager();
                 windowManager.closeAllTabbedWindows();
             });
         }
@@ -275,7 +275,7 @@ public class WebAppWorkArea extends WebAbstractComponent<CssLayout> implements A
     }
 
     /**
-     * Used only by {@link com.haulmont.cuba.web.WebWindowManager}
+     * Used only by {@link WebWindowManagerImpl}
      *
      * @param state new state
      */

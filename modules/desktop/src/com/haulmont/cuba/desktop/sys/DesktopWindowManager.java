@@ -84,7 +84,7 @@ import static com.haulmont.cuba.gui.components.Frame.MessageType;
 import static com.haulmont.cuba.gui.components.Frame.NotificationType;
 import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml;
 
-public class DesktopWindowManager extends WindowManager {
+public class DesktopWindowManager extends WindowManagerImpl {
 
     private static final Logger log = LoggerFactory.getLogger(DesktopWindowManager.class);
     private Logger userActionsLog = LoggerFactory.getLogger(UserActionsLogger.class);
@@ -1778,7 +1778,7 @@ public class DesktopWindowManager extends WindowManager {
     }
 
     /**
-     * Release resources right before throwing away this WindowManager instance.
+     * Release resources right before throwing away this WindowManagerImpl instance.
      */
     public void dispose() {
         for (WindowOpenInfo openInfo : windowOpenMode.values()) {

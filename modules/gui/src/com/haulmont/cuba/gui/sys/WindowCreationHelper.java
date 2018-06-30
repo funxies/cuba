@@ -15,10 +15,11 @@
  *
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.UserSessionSource;
+import com.haulmont.cuba.gui.ComponentsHelper;
 import com.haulmont.cuba.gui.app.security.role.edit.UiPermissionDescriptor;
 import com.haulmont.cuba.gui.app.security.role.edit.UiPermissionValue;
 import com.haulmont.cuba.gui.components.*;
@@ -39,9 +40,10 @@ import java.util.regex.Pattern;
 /**
  * Utility class used by the framework when it creates frames and windows. Not for use in application code.
  */
+// todo refactor to bean
 public final class WindowCreationHelper {
 
-    private static final Pattern INNER_COMPONENT_PATTERN = Pattern.compile("(.+?)\\[(.+?)\\]");
+    private static final Pattern INNER_COMPONENT_PATTERN = Pattern.compile("(.+?)\\[(.+?)]");
     private static final Pattern COMPONENT_ACTION_PATTERN = Pattern.compile("(.+?)<(.+?)>");
 
     private static final Logger log = LoggerFactory.getLogger(WindowCreationHelper.class);

@@ -28,7 +28,7 @@ import com.haulmont.cuba.core.entity.Categorized;
 import com.haulmont.cuba.core.entity.CategoryAttribute;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.commonlookup.CommonLookupController;
 import com.haulmont.cuba.gui.components.PickerField;

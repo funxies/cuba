@@ -20,7 +20,7 @@ package com.haulmont.cuba.web.gui.components;
 import com.haulmont.bali.util.Preconditions;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.TestIdManager;
+import com.haulmont.cuba.gui.sys.TestIdManager;
 import com.haulmont.cuba.gui.app.security.role.edit.UiPermissionDescriptor;
 import com.haulmont.cuba.gui.app.security.role.edit.UiPermissionValue;
 import com.haulmont.cuba.gui.components.*;
@@ -30,7 +30,7 @@ import com.haulmont.cuba.gui.icons.Icons;
 import com.haulmont.cuba.gui.settings.Settings;
 import com.haulmont.cuba.gui.xml.layout.ComponentLoader;
 import com.haulmont.cuba.web.AppUI;
-import com.haulmont.cuba.web.WebWindowManager;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.haulmont.cuba.web.gui.icons.IconResolver;
 import com.haulmont.cuba.web.widgets.CubaAccordion;
 import com.vaadin.server.Resource;
@@ -573,7 +573,7 @@ public class WebAccordion extends WebAbstractComponent<CubaAccordion> implements
                     if (appUI.isTestMode()) {
                         context.addPostInitTask((context1, window1) -> {
                             Window.TopLevelWindow appWindow = appUI.getTopLevelWindow();
-                            ((WebWindowManager) appWindow.getWindowManager()).initDebugIds(window1);
+                            ((WebWindowManagerImpl) appWindow.getWindowManager()).initDebugIds(window1);
                         });
                     }
                 }

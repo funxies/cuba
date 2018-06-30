@@ -68,8 +68,7 @@ public abstract class ComponentsHelper {
     }
 
     @Nullable
-    public static Component getWindowComponent(
-            Window window, String id) {
+    public static Component getWindowComponent(Window window, String id) {
         final String[] elements = ValuePathHelper.parse(id);
         if (elements.length == 1) {
             Component component = window.getRegisteredComponent(id);
@@ -80,20 +79,20 @@ public abstract class ComponentsHelper {
         } else {
             Component innerComponent = window.getRegisteredComponent(elements[0]);
             if (innerComponent instanceof FieldGroup) {
-                final List<String> subList = Arrays.asList(elements).subList(1, elements.length);
-                String subPath = ValuePathHelper.format(subList.toArray(new String[subList.size()]));
+                List<String> subList = Arrays.asList(elements).subList(1, elements.length);
+                String subPath = ValuePathHelper.format(subList.toArray(new String[0]));
 
                 FieldGroup fieldGroup = (FieldGroup) innerComponent;
                 FieldGroup.FieldConfig field = fieldGroup.getField(subPath);
 
                 return field != null ? field.getComponent() : null;
             } else if (innerComponent instanceof ComponentContainer) {
-                final List<String> subList = Arrays.asList(elements).subList(1, elements.length);
-                String subPath = ValuePathHelper.format(subList.toArray(new String[subList.size()]));
+                List<String> subList = Arrays.asList(elements).subList(1, elements.length);
+                String subPath = ValuePathHelper.format(subList.toArray(new String[0]));
                 return ((ComponentContainer) innerComponent).getComponent(subPath);
             } else if (innerComponent instanceof HasNamedComponents) {
-                final List<String> subList = Arrays.asList(elements).subList(1, elements.length);
-                String subPath = ValuePathHelper.format(subList.toArray(new String[subList.size()]));
+                List<String> subList = Arrays.asList(elements).subList(1, elements.length);
+                String subPath = ValuePathHelper.format(subList.toArray(new String[0]));
                 return ((HasNamedComponents) innerComponent).getComponent(subPath);
             }
 
@@ -103,7 +102,7 @@ public abstract class ComponentsHelper {
 
     @Nullable
     public static Component getFrameComponent(Frame frame, String id) {
-        final String[] elements = ValuePathHelper.parse(id);
+        String[] elements = ValuePathHelper.parse(id);
         if (elements.length == 1) {
             Component component = frame.getRegisteredComponent(id);
             if (component == null && frame.getFrame() != null && frame.getFrame() != frame) {
@@ -153,7 +152,7 @@ public abstract class ComponentsHelper {
             } else {
                 if (innerComponent instanceof FieldGroup) {
                     final List<String> subList = Arrays.asList(elements).subList(1, elements.length);
-                    String subPath = ValuePathHelper.format(subList.toArray(new String[subList.size()]));
+                    String subPath = ValuePathHelper.format(subList.toArray(new String[0]));
 
                     FieldGroup fieldGroup = (FieldGroup) innerComponent;
                     FieldGroup.FieldConfig field = fieldGroup.getField(subPath);
@@ -161,11 +160,11 @@ public abstract class ComponentsHelper {
                     return field != null ? field.getComponent() : null;
                 } else if (innerComponent instanceof ComponentContainer) {
                     final List<String> subList = Arrays.asList(elements).subList(1, elements.length);
-                    String subPath = ValuePathHelper.format(subList.toArray(new String[subList.size()]));
+                    String subPath = ValuePathHelper.format(subList.toArray(new String[0]));
                     return ((com.haulmont.cuba.gui.components.ComponentContainer) innerComponent).getComponent(subPath);
                 } else if (innerComponent instanceof HasNamedComponents) {
                     final List<String> subList = Arrays.asList(elements).subList(1, elements.length);
-                    String subPath = ValuePathHelper.format(subList.toArray(new String[subList.size()]));
+                    String subPath = ValuePathHelper.format(subList.toArray(new String[0]));
                     return ((HasNamedComponents) innerComponent).getComponent(subPath);
                 }
 
@@ -190,7 +189,7 @@ public abstract class ComponentsHelper {
     }
 
     private static void fillChildComponents(ComponentContainer container, Collection<Component> components) {
-        final Collection<Component> ownComponents = container.getOwnComponents();
+        Collection<Component> ownComponents = container.getOwnComponents();
         components.addAll(ownComponents);
 
         for (Component component : ownComponents) {
@@ -434,8 +433,7 @@ public abstract class ComponentsHelper {
         return width + widthUnit.getSymbol();
     }
 
-    // FIXME: gg, fix typo in the method name?
-    public static String getComponentHeigth(Component c) {
+    public static String getComponentHeight(Component c) {
         float height = c.getHeight();
         SizeUnit heightUnit = c.getHeightSizeUnit();
         return height + heightUnit.getSymbol();

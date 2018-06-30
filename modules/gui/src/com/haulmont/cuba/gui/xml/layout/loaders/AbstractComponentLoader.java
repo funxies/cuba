@@ -28,7 +28,7 @@ import com.haulmont.cuba.core.config.Config;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.core.sys.AppContext;
 import com.haulmont.cuba.gui.GuiDevelopmentException;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.Component.Alignment;
 import com.haulmont.cuba.gui.components.validators.*;
@@ -707,9 +707,9 @@ public abstract class AbstractComponentLoader<T extends Component> implements Co
                         return action;
                     }
 
-                    WindowManager.OpenType openType;
+                    WindowManagerImpl.OpenType openType;
                     try {
-                        openType = WindowManager.OpenType.valueOf(openTypeString);
+                        openType = WindowManagerImpl.OpenType.valueOf(openTypeString);
                     } catch (IllegalArgumentException e) {
                         throw new GuiDevelopmentException(
                                 "Unknown open type: '" + openTypeString + "' for action: '" + id + "'", context.getFullFrameId());

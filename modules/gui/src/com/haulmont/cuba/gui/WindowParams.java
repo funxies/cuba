@@ -25,14 +25,14 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Describes special window parameters that are set by system mechanisms such as {@link WindowManager}.
+ * Describes special window parameters that are set by system mechanisms such as {@link WindowManagerImpl}.
  * Some of the parameters are intended for use by application code, others affect low-level window opening behaviour.
  *
  */
 public enum WindowParams {
 
     /**
-     * Entity instance which is passed to an editor's controller <code>init</code> method from {@link WindowManager}.
+     * Entity instance which is passed to an editor's controller <code>init</code> method from {@link WindowManagerImpl}.
      */
     ITEM,
 

@@ -21,7 +21,7 @@ import com.haulmont.chile.core.model.MetaClass;
 import com.haulmont.cuba.client.ClientConfig;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.WindowParam;
 import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.app.security.events.UserPasswordChangedEvent;

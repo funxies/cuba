@@ -15,20 +15,21 @@
  *
  */
 
-package com.haulmont.cuba.web;
+package com.haulmont.cuba.web.sys;
 
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowManagerProvider;
 
+import com.haulmont.cuba.web.App;
 import org.springframework.stereotype.Component;
 
 @Component(WindowManagerProvider.NAME)
 public class WebWindowManagerProvider implements WindowManagerProvider {
 
     @Override
-    public WindowManager get() {
+    public WindowManagerImpl get() {
         if (!App.isBound())
-            throw new IllegalStateException("Could not get WindowManager without bounded App");
+            throw new IllegalStateException("Could not get WindowManagerImpl without bounded App");
 
         return App.getInstance().getWindowManager();
     }

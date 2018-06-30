@@ -17,14 +17,14 @@
 package com.haulmont.cuba.web.security.listeners;
 
 import com.haulmont.bali.util.ParamsMap;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.Window;
 import com.haulmont.cuba.gui.config.WindowConfig;
 import com.haulmont.cuba.gui.config.WindowInfo;
 import com.haulmont.cuba.security.entity.User;
 import com.haulmont.cuba.web.App;
 import com.haulmont.cuba.web.Connection;
-import com.haulmont.cuba.web.WebWindowManager;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.haulmont.cuba.web.security.events.AppLoggedInEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -48,7 +48,7 @@ public class ChangePasswordAfterLoginListener implements ApplicationListener<App
             User user = connection.getSessionNN().getUser();
             // Change password on logon
             if (Boolean.TRUE.equals(user.getChangePasswordAtNextLogon())) {
-                WebWindowManager wm = app.getWindowManager();
+                WebWindowManagerImpl wm = app.getWindowManager();
                 for (Window window : wm.getOpenWindows()) {
                     window.setEnabled(false);
                 }
@@ -56,7 +56,7 @@ public class ChangePasswordAfterLoginListener implements ApplicationListener<App
                 WindowInfo changePasswordDialog = windowConfig.getWindowInfo("sec$User.changePassword");
 
                 Window changePasswordWindow = wm.openWindow(changePasswordDialog,
-                        WindowManager.OpenType.DIALOG.closeable(false),
+                        WindowManagerImpl.OpenType.DIALOG.closeable(false),
                         ParamsMap.of("cancelEnabled", Boolean.FALSE));
 
                 changePasswordWindow.addCloseListener(actionId -> {

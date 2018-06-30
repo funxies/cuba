@@ -19,7 +19,7 @@ package com.haulmont.cuba.web.gui.components;
 import com.haulmont.bali.util.Preconditions;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.TestIdManager;
+import com.haulmont.cuba.gui.sys.TestIdManager;
 import com.haulmont.cuba.gui.app.security.role.edit.UiPermissionDescriptor;
 import com.haulmont.cuba.gui.app.security.role.edit.UiPermissionValue;
 import com.haulmont.cuba.gui.components.*;
@@ -30,7 +30,7 @@ import com.haulmont.cuba.gui.settings.Settings;
 import com.haulmont.cuba.gui.xml.layout.ComponentLoader;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import com.haulmont.cuba.web.AppUI;
-import com.haulmont.cuba.web.WebWindowManager;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.haulmont.cuba.web.gui.icons.IconResolver;
 import com.haulmont.cuba.web.widgets.CubaTabSheet;
 import com.vaadin.server.Resource;
@@ -621,7 +621,7 @@ public class WebTabSheet extends WebAbstractComponent<CubaTabSheet> implements T
                     if (appUI.isTestMode()) {
                         context.addPostInitTask((localContext, localWindow) -> {
                             Window.TopLevelWindow appWindow = appUI.getTopLevelWindow();
-                            ((WebWindowManager) appWindow.getWindowManager()).initDebugIds(localWindow);
+                            ((WebWindowManagerImpl) appWindow.getWindowManager()).initDebugIds(localWindow);
                         });
                     }
                 }

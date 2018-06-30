@@ -20,15 +20,15 @@ package com.haulmont.cuba.desktop.app.security.user;
 import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.desktop.App;
-import com.haulmont.cuba.gui.WindowManager;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.config.WindowConfig;
 import com.haulmont.cuba.gui.config.WindowInfo;
 
 public class ChangePasswordLauncher implements Runnable {
     @Override
     public void run() {
-        WindowManager wm = App.getInstance().getMainFrame().getWindowManager();
+        WindowManagerImpl wm = App.getInstance().getMainFrame().getWindowManager();
 
         WindowConfig windowConfig = AppBeans.get(WindowConfig.NAME);
         WindowInfo windowInfo = windowConfig.getWindowInfo("sec$User.changePassword");

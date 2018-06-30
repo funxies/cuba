@@ -19,7 +19,7 @@ package com.haulmont.cuba.web;
 
 import com.haulmont.cuba.client.ClientUserSession;
 import com.haulmont.cuba.core.global.*;
-import com.haulmont.cuba.gui.TestIdManager;
+import com.haulmont.cuba.gui.sys.TestIdManager;
 import com.haulmont.cuba.gui.components.Window.TopLevelWindow;
 import com.haulmont.cuba.gui.events.sys.UiEventsMulticaster;
 import com.haulmont.cuba.gui.theme.ThemeConstantsRepository;

@@ -32,7 +32,7 @@ import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.core.global.ReferenceToEntitySupport;
 import com.haulmont.cuba.core.global.TimeSource;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.app.core.entityinspector.EntityInspectorBrowse;
 import com.haulmont.cuba.gui.components.*;
@@ -228,7 +228,7 @@ public class EntityLogBrowser extends AbstractWindow {
                     } else {
                         lookupWindow.openLookup(EntityInspectorBrowse.SCREEN_NAME,
                                 lookupWindowHandler,
-                                WindowManager.OpenType.THIS_TAB,
+                                WindowManagerImpl.OpenType.THIS_TAB,
                                 ParamsMap.of("entity", metaClass.getName())
                         );
                     }

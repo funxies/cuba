@@ -15,7 +15,7 @@
  *
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
@@ -25,6 +25,10 @@ import com.haulmont.cuba.client.ClientConfiguration;
 import com.haulmont.cuba.core.config.Config;
 import com.haulmont.cuba.core.global.Configuration;
 import com.haulmont.cuba.core.global.Events;
+import com.haulmont.cuba.gui.AppConfig;
+import com.haulmont.cuba.gui.ComponentsHelper;
+import com.haulmont.cuba.gui.FrameContext;
+import com.haulmont.cuba.gui.WindowParam;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.data.DataSupplier;
 import com.haulmont.cuba.gui.data.Datasource;
@@ -85,7 +89,7 @@ public class ControllerDependencyInjector implements ApplicationContextAware {
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@Nonnull ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 

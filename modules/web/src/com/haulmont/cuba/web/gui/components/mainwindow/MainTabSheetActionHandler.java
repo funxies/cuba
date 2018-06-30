@@ -22,7 +22,7 @@ import com.haulmont.chile.core.model.MetaClass;
 import com.haulmont.cuba.client.ClientConfig;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.app.core.dev.LayoutAnalyzer;
 import com.haulmont.cuba.gui.app.core.dev.LayoutTip;
 import com.haulmont.cuba.gui.components.Frame;
@@ -144,7 +144,7 @@ public class MainTabSheetActionHandler implements Action.Handler {
             if (tipsList.isEmpty()) {
                 window.showNotification("No layout problems found", Frame.NotificationType.HUMANIZED);
             } else {
-                window.openWindow("layoutAnalyzer", WindowManager.OpenType.DIALOG, ParamsMap.of("tipsList", tipsList));
+                window.openWindow("layoutAnalyzer", WindowManagerImpl.OpenType.DIALOG, ParamsMap.of("tipsList", tipsList));
             }
         }
     }

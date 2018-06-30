@@ -27,7 +27,6 @@ import com.haulmont.cuba.gui.config.WindowInfo;
 import com.haulmont.cuba.gui.logging.UIPerformanceLogger;
 import com.haulmont.cuba.gui.xml.layout.ComponentLoader;
 import com.haulmont.cuba.gui.xml.layout.LayoutLoader;
-import com.haulmont.cuba.gui.xml.layout.LayoutLoaderConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Element;
 import org.perf4j.StopWatch;
@@ -51,7 +50,10 @@ public class FrameComponentLoader extends ContainerLoader<Frame> {
             WindowInfo windowInfo = windowConfig.getWindowInfo(screenId);
             src = windowInfo.getTemplate();
             if (src == null) {
-                throw new GuiDevelopmentException("Screen " + screenId + " doesn't have template path configured", context.getFullFrameId());
+                throw new GuiDevelopmentException(
+                        String.format("Screen %s doesn't have template path configured", screenId),
+                        context.getFullFrameId()
+                );
             }
         }
 
@@ -59,7 +61,7 @@ public class FrameComponentLoader extends ContainerLoader<Frame> {
             frameId = element.attributeValue("id");
         }
 
-        LayoutLoader layoutLoader = new LayoutLoader(context, factory, LayoutLoaderConfig.getFrameLoaders());
+        LayoutLoader layoutLoader = new LayoutLoader(context, factory, layoutLoaderConfig);
         layoutLoader.setLocale(getLocale());
         layoutLoader.setMessagesPack(getMessagesPack());
 
@@ -88,7 +90,7 @@ public class FrameComponentLoader extends ContainerLoader<Frame> {
 
         loadAlign(resultComponent, element);
 
-        loadHeight(resultComponent, element, ComponentsHelper.getComponentHeigth(resultComponent));
+        loadHeight(resultComponent, element, ComponentsHelper.getComponentHeight(resultComponent));
         loadWidth(resultComponent, element, ComponentsHelper.getComponentWidth(resultComponent));
 
         loadIcon(resultComponent, element);

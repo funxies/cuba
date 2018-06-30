@@ -22,7 +22,7 @@ import com.haulmont.cuba.client.ClientConfig;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowParam;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.filter.AddConditionHelper;
@@ -148,7 +148,7 @@ public class FilterEditor extends AbstractWindow {
     protected Set<Entity> modifiedGlobalDefaultFilters = new HashSet<>();
 
     public interface Companion {
-        void showComponentName(WindowManager windowManager, String title, String message);
+        void showComponentName(WindowManagerImpl windowManager, String title, String message);
     }
 
     @Override

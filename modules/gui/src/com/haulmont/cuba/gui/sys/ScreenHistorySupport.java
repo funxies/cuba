@@ -15,7 +15,7 @@
  *
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import com.haulmont.bali.util.URLEncodeUtils;
 import com.haulmont.chile.core.model.MetaClass;
@@ -33,9 +33,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 
+import static com.haulmont.cuba.gui.WindowManager.OpenMode;
+
 /**
- * Class that encapsulates screen opening history functionality. It is used by WindowManager and should not be invoked
+ * Class that encapsulates screen opening history functionality. It is used by WindowManagerImpl and should not be invoked
  * from application code.
+ *
+ * todo convert to bean
  */
 public class ScreenHistorySupport {
 
@@ -65,12 +69,12 @@ public class ScreenHistorySupport {
         }
     }
 
-    public void saveScreenHistory(Window window, WindowManager.OpenMode openMode) {
+    public void saveScreenHistory(Window window, OpenMode openMode) {
         Security security = AppBeans.get(Security.NAME);
         if (security.isEntityOpPermitted(ScreenHistoryEntity.class, EntityOp.CREATE)
                 && window.getFrame() != null
                 && (window.getFrame() instanceof Window.Editor)
-                && openMode != WindowManager.OpenMode.DIALOG
+                && openMode != OpenMode.DIALOG
                 && (screenIds == null || screenIds.contains(window.getId())))
         {
             String caption = window.getCaption();

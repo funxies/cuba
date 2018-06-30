@@ -17,7 +17,7 @@
 
 package com.haulmont.cuba.web.app.ui.jmxinstance.browse;
 
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.AbstractLookup;
 import com.haulmont.cuba.gui.components.actions.CreateAction;
 import com.haulmont.cuba.gui.components.actions.EditAction;
@@ -37,7 +37,7 @@ public class JmxInstanceBrowser extends AbstractLookup {
     public void init(Map<String, Object> params) {
         super.init(params);
 
-        createInstanceAction.setOpenType(WindowManager.OpenType.DIALOG);
-        editInstanceAction.setOpenType(WindowManager.OpenType.DIALOG);
+        createInstanceAction.setOpenType(WindowManagerImpl.OpenType.DIALOG);
+        editInstanceAction.setOpenType(WindowManagerImpl.OpenType.DIALOG);
     }
 }

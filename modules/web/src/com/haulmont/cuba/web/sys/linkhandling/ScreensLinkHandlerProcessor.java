@@ -4,7 +4,7 @@ import com.haulmont.cuba.core.app.DataService;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.NoSuchScreenException;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.config.WindowConfig;
 import com.haulmont.cuba.gui.config.WindowInfo;
 import com.haulmont.cuba.gui.exception.AccessDeniedHandler;
@@ -77,11 +77,11 @@ public class ScreensLinkHandlerProcessor implements LinkHandlerProcessor, Ordere
 
         String itemStr = requestParams.get("item");
         String openTypeParam = requestParams.get("openType");
-        WindowManager.OpenType openType = WindowManager.OpenType.NEW_TAB;
+        WindowManagerImpl.OpenType openType = WindowManagerImpl.OpenType.NEW_TAB;
 
         if (StringUtils.isNotEmpty(openTypeParam)) {
             try {
-                openType = WindowManager.OpenType.valueOf(openTypeParam);
+                openType = WindowManagerImpl.OpenType.valueOf(openTypeParam);
             } catch (IllegalArgumentException e) {
                 log.warn("Unknown open type ({}) in request parameters", openTypeParam);
             }

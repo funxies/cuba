@@ -18,7 +18,7 @@ package com.haulmont.cuba.gui.app.core.locking;
 
 import com.haulmont.cuba.core.app.LockService;
 import com.haulmont.cuba.core.global.LockInfo;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.AbstractWindow;
 import com.haulmont.cuba.gui.components.Table;
 import com.haulmont.cuba.gui.components.actions.CreateAction;
@@ -50,8 +50,8 @@ public class LockBrowser extends AbstractWindow {
 
     @Override
     public void init(Map<String, Object> params) {
-        createAction.setOpenType(WindowManager.OpenType.DIALOG);
-        editAction.setOpenType(WindowManager.OpenType.DIALOG);
+        createAction.setOpenType(WindowManagerImpl.OpenType.DIALOG);
+        editAction.setOpenType(WindowManagerImpl.OpenType.DIALOG);
         refresh();
     }
 

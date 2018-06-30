@@ -14,11 +14,12 @@
  * limitations under the License.
  *
  */
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import com.haulmont.chile.core.datatypes.impl.EnumClass;
 import com.haulmont.chile.core.model.Instance;
 import com.haulmont.chile.core.model.utils.InstanceUtils;
+import com.haulmont.cuba.gui.FrameContext;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.compatibility.ComponentValueListenerWrapper;
 import com.haulmont.cuba.gui.components.sys.ValuePathHelper;

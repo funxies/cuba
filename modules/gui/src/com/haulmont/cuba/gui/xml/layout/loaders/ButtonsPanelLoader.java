@@ -22,13 +22,12 @@ import com.haulmont.cuba.gui.components.Component;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 public class ButtonsPanelLoader extends ContainerLoader<ButtonsPanel> {
 
-    protected void applyButtonsProvider(ButtonsPanel panel, ButtonsPanel.Provider buttonsProvider)
-            throws IllegalAccessException, InstantiationException {
-
+    protected void applyButtonsProvider(ButtonsPanel panel, ButtonsPanel.Provider buttonsProvider) {
         Collection<Component> buttons = buttonsProvider.getButtons();
         for (Component button : buttons) {
             panel.add(button);
@@ -69,13 +68,16 @@ public class ButtonsPanelLoader extends ContainerLoader<ButtonsPanel> {
             if (StringUtils.isNotEmpty(className)) {
                 Class<ButtonsPanel.Provider> clazz = ReflectionHelper.getClass(className);
 
+                ButtonsPanel.Provider instance;
                 try {
                     Constructor<ButtonsPanel.Provider> constructor = clazz.getConstructor();
-                    ButtonsPanel.Provider instance = constructor.newInstance();
-                    applyButtonsProvider(resultComponent, instance);
-                } catch (Throwable e) {
+                    instance = constructor.newInstance();
+                } catch (NoSuchMethodException | InstantiationException
+                        | InvocationTargetException | IllegalAccessException e) {
                     throw new RuntimeException("Unable to apply buttons provider", e);
                 }
+
+                applyButtonsProvider(resultComponent, instance);
             }
         }
     }

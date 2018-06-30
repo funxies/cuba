@@ -18,12 +18,12 @@
 package com.haulmont.cuba.gui;
 
 /**
- * Provides current client specific WindowManager
+ * Provides current client specific WindowManagerImpl
  *
  */
 public interface WindowManagerProvider {
 
     String NAME = "cuba_WindowManagerProvider";
 
-    WindowManager get();
+    WindowManagerImpl get();
 }

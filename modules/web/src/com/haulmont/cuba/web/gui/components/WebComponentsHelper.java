@@ -253,32 +253,6 @@ public class WebComponentsHelper {
     }
 
     /**
-     * Add actions to vaadin action container.
-     *
-     * @param container any {@link Action.Container}
-     * @param actions   map of actions
-     */
-    @Deprecated
-    public static void setActions(Action.Container container,
-                                  Map<Action, Runnable> actions) {
-        container.addActionHandler(new Action.Handler() {
-            @Override
-            public Action[] getActions(Object target, Object sender) {
-                Set<Action> shortcuts = actions.keySet();
-                return shortcuts.toArray(new Action[0]);
-            }
-
-            @Override
-            public void handleAction(Action action, Object sender, Object target) {
-                Runnable runnable = actions.get(action);
-                if (runnable != null) {
-                    runnable.run();
-                }
-            }
-        });
-    }
-
-    /**
      * Checks if the component should be visible to the client. Returns false if
      * the child should not be sent to the client, true otherwise.
      *

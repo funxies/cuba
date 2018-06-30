@@ -31,7 +31,7 @@ import com.haulmont.cuba.desktop.sys.layout.BoxLayoutAdapter;
 import com.haulmont.cuba.desktop.sys.layout.MigBoxLayoutAdapter;
 import com.haulmont.cuba.desktop.sys.layout.MigLayoutHelper;
 import com.haulmont.cuba.desktop.sys.vcl.ExtFlowLayout;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.components.AbstractAction;
 import com.haulmont.cuba.gui.components.*;
@@ -85,7 +85,7 @@ public class DesktopTokenList extends DesktopAbstractField<JPanel> implements To
 
     protected String lookupScreen;
 
-    protected WindowManager.OpenType lookupOpenMode = WindowManager.OpenType.THIS_TAB;
+    protected WindowManagerImpl.OpenType lookupOpenMode = WindowManagerImpl.OpenType.THIS_TAB;
 
     protected Map<String, Object> lookupScreenParams;
 
@@ -452,12 +452,12 @@ public class DesktopTokenList extends DesktopAbstractField<JPanel> implements To
     }
 
     @Override
-    public WindowManager.OpenType getLookupOpenMode() {
+    public WindowManagerImpl.OpenType getLookupOpenMode() {
         return lookupOpenMode;
     }
 
     @Override
-    public void setLookupOpenMode(WindowManager.OpenType lookupOpenMode) {
+    public void setLookupOpenMode(WindowManagerImpl.OpenType lookupOpenMode) {
         this.lookupOpenMode = lookupOpenMode;
     }
 
@@ -878,7 +878,7 @@ public class DesktopTokenList extends DesktopAbstractField<JPanel> implements To
                 params.putAll(lookupScreenParams);
             }
 
-            WindowManager wm = DesktopComponentsHelper.getTopLevelFrame(DesktopTokenList.this).getWindowManager();
+            WindowManagerImpl wm = DesktopComponentsHelper.getTopLevelFrame(DesktopTokenList.this).getWindowManager();
 
             Window.Lookup lookupWindow = wm.openLookup(windowInfo, new Window.Lookup.Handler() {
                 @Override

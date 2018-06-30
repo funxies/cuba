@@ -100,7 +100,7 @@ public class RelatedEntitiesBean implements RelatedEntitiesAPI {
         Preconditions.checkNotNullArgument(metaClass, "MetaClass can't be null");
         Preconditions.checkNotNullArgument(metaProperty, "MetaProperty can't be null");
 
-        WindowManager windowManager = windowManagerProvider.get();
+        WindowManagerImpl windowManager = windowManagerProvider.get();
         if (!selectedEntities.isEmpty()) {
             Map<String, Object> params = new HashMap<>();
 
@@ -125,7 +125,7 @@ public class RelatedEntitiesBean implements RelatedEntitiesAPI {
             }
 
 
-            WindowManager.OpenType openType = WindowManager.OpenType.THIS_TAB;
+            WindowManagerImpl.OpenType openType = WindowManagerImpl.OpenType.THIS_TAB;
             if (descriptor != null) {
                 openType = descriptor.getOpenType();
             }

@@ -26,7 +26,7 @@ import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.ExtendedEntities;
 import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.core.global.Metadata;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.config.WindowConfig;
@@ -77,7 +77,7 @@ public class WebTokenList<V> extends WebAbstractField<WebTokenList.CubaTokenList
     protected WebLookupPickerField<Entity> lookupPickerField;
 
     protected String lookupScreen;
-    protected WindowManager.OpenType lookupOpenMode = WindowManager.OpenType.THIS_TAB;
+    protected WindowManagerImpl.OpenType lookupOpenMode = WindowManagerImpl.OpenType.THIS_TAB;
     protected Map<String, Object> lookupScreenParams;
 
     protected TokenStyleGenerator tokenStyleGenerator;
@@ -165,12 +165,12 @@ public class WebTokenList<V> extends WebAbstractField<WebTokenList.CubaTokenList
     }
 
     @Override
-    public WindowManager.OpenType getLookupOpenMode() {
+    public WindowManagerImpl.OpenType getLookupOpenMode() {
         return lookupOpenMode;
     }
 
     @Override
-    public void setLookupOpenMode(WindowManager.OpenType lookupOpenMode) {
+    public void setLookupOpenMode(WindowManagerImpl.OpenType lookupOpenMode) {
         this.lookupOpenMode = lookupOpenMode;
     }
 
@@ -763,7 +763,7 @@ public class WebTokenList<V> extends WebAbstractField<WebTokenList.CubaTokenList
                         params.putAll(lookupScreenParams);
                     }
 
-                    WindowManager wm = App.getInstance().getWindowManager();
+                    WindowManagerImpl wm = App.getInstance().getWindowManager();
 
                     Window.Lookup lookup = wm.openLookup(windowInfo, items -> {
                         if (lookupPickerField.isRefreshOptionsOnLookupClose()) {

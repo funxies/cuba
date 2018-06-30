@@ -19,7 +19,7 @@ package com.haulmont.cuba.gui.relatedentities;
 import com.haulmont.chile.core.model.MetaClass;
 import com.haulmont.chile.core.model.MetaProperty;
 import com.haulmont.cuba.core.entity.Entity;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 
 import java.util.Collection;
 import java.util.Map;
@@ -43,7 +43,7 @@ public interface RelatedEntitiesAPI {
      * @param selectedEntities set of entities which represents one side of relation
      * @param metaClass        metaClass of single entity from <code>selectedEntities</code>
      * @param metaProperty     chosen field to find related entities. Can be obtained from <code>metaClass</code>
-     * @param descriptor       descriptor contains screen id, {@link com.haulmont.cuba.gui.WindowManager.OpenType} and
+     * @param descriptor       descriptor contains screen id, {@link WindowManagerImpl.OpenType} and
      *                         generated filter caption
      */
     void openRelatedScreen(Collection<? extends Entity> selectedEntities, MetaClass metaClass, MetaProperty metaProperty,
@@ -64,7 +64,7 @@ public interface RelatedEntitiesAPI {
      * @param selectedEntities set of entities which represents one side of relation
      * @param clazz            class of single entity from <code>selectedEntities</code>
      * @param property         chosen field to find related entities
-     * @param descriptor       descriptor contains screen id, {@link com.haulmont.cuba.gui.WindowManager.OpenType} and
+     * @param descriptor       descriptor contains screen id, {@link WindowManagerImpl.OpenType} and
      *                         generated filter caption
      */
     <T extends Entity> void openRelatedScreen(Collection<T> selectedEntities, Class<T> clazz, String property,
@@ -73,17 +73,17 @@ public interface RelatedEntitiesAPI {
     class RelatedScreenDescriptor {
 
         protected String screenId;
-        protected WindowManager.OpenType openType = WindowManager.OpenType.THIS_TAB;
+        protected WindowManagerImpl.OpenType openType = WindowManagerImpl.OpenType.THIS_TAB;
         protected String filterCaption;
         protected Map<String, Object> screenParams;
 
-        public RelatedScreenDescriptor(String screenId, WindowManager.OpenType openType) {
+        public RelatedScreenDescriptor(String screenId, WindowManagerImpl.OpenType openType) {
             this.screenId = screenId;
             this.openType = openType;
         }
 
         public RelatedScreenDescriptor(String screenId) {
-            this(screenId, WindowManager.OpenType.THIS_TAB);
+            this(screenId, WindowManagerImpl.OpenType.THIS_TAB);
         }
 
         public RelatedScreenDescriptor() {
@@ -93,7 +93,7 @@ public interface RelatedEntitiesAPI {
             return screenId;
         }
 
-        public WindowManager.OpenType getOpenType() {
+        public WindowManagerImpl.OpenType getOpenType() {
             return openType;
         }
 
@@ -109,7 +109,7 @@ public interface RelatedEntitiesAPI {
             this.screenId = screenId;
         }
 
-        public void setOpenType(WindowManager.OpenType openType) {
+        public void setOpenType(WindowManagerImpl.OpenType openType) {
             this.openType = openType;
         }
 

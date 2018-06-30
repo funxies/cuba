@@ -23,6 +23,7 @@ import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.core.sys.AppContext;
 import com.haulmont.cuba.gui.components.AbstractFrame;
 import com.haulmont.cuba.gui.components.AbstractWindow;
+import com.haulmont.cuba.gui.sys.ControllerDependencyInjector;
 import mockit.Mocked;
 import mockit.Expectations;
 import org.junit.Before;

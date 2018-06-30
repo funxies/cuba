@@ -153,5 +153,5 @@ public interface ComponentLoader<T extends Component> {
      *
      * @see #createComponent()
      */
-    Component getResultComponent();
+    T getResultComponent();
 }

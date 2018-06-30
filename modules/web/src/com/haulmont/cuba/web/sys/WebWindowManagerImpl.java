@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.haulmont.cuba.web;
+package com.haulmont.cuba.web.sys;
 
 import com.google.common.collect.Lists;
 import com.haulmont.bali.datastruct.Pair;
@@ -26,8 +26,8 @@ import com.haulmont.cuba.core.global.DevelopmentException;
 import com.haulmont.cuba.core.global.SilentException;
 import com.haulmont.cuba.core.global.UuidSource;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.ScreenHistorySupport;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManager.OpenMode;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.app.core.dev.LayoutAnalyzer;
 import com.haulmont.cuba.gui.app.core.dev.LayoutTip;
 import com.haulmont.cuba.gui.components.*;
@@ -48,9 +48,12 @@ import com.haulmont.cuba.gui.config.WindowConfig;
 import com.haulmont.cuba.gui.config.WindowInfo;
 import com.haulmont.cuba.gui.icons.CubaIcon;
 import com.haulmont.cuba.gui.icons.Icons;
+import com.haulmont.cuba.gui.sys.ScreenHistorySupport;
 import com.haulmont.cuba.gui.theme.ThemeConstants;
-import com.haulmont.cuba.gui.xml.layout.LayoutLoaderConfig;
 import com.haulmont.cuba.security.app.UserSettingService;
+import com.haulmont.cuba.web.App;
+import com.haulmont.cuba.web.AppUI;
+import com.haulmont.cuba.web.WebConfig;
 import com.haulmont.cuba.web.exception.ExceptionDialog;
 import com.haulmont.cuba.web.gui.WebWindow;
 import com.haulmont.cuba.web.gui.components.WebButton;
@@ -59,7 +62,6 @@ import com.haulmont.cuba.web.gui.components.WebWrapperUtils;
 import com.haulmont.cuba.web.gui.components.mainwindow.WebAppWorkArea;
 import com.haulmont.cuba.web.gui.components.util.ShortcutListenerDelegate;
 import com.haulmont.cuba.web.gui.icons.IconResolver;
-import com.haulmont.cuba.web.sys.WindowBreadCrumbs;
 import com.haulmont.cuba.web.widgets.*;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.event.ShortcutListener;
@@ -90,16 +92,16 @@ import static com.haulmont.cuba.web.gui.components.WebComponentsHelper.convertNo
 import static com.vaadin.server.Sizeable.Unit;
 import static java.util.Collections.singletonMap;
 
-@org.springframework.stereotype.Component(WebWindowManager.NAME)
+@org.springframework.stereotype.Component(WebWindowManagerImpl.NAME)
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class WebWindowManager extends WindowManager {
+public class WebWindowManagerImpl extends WindowManagerImpl {
 
     public static final String NAME = "cuba_WebWindowManager";
 
     public static final int HUMANIZED_NOTIFICATION_DELAY_MSEC = 3000;
     public static final int WARNING_NOTIFICATION_DELAY_MSEC = -1;
 
-    private static final Logger log = LoggerFactory.getLogger(WebWindowManager.class);
+    private static final Logger log = LoggerFactory.getLogger(WebWindowManagerImpl.class);
 
     protected App app;
     protected AppUI ui;
@@ -127,8 +129,12 @@ public class WebWindowManager extends WindowManager {
     protected boolean disableSavingScreenHistory;
     protected ScreenHistorySupport screenHistorySupport;
 
-    public WebWindowManager() {
-        screenHistorySupport = new ScreenHistorySupport();
+    public WebWindowManagerImpl() {
+        screenHistorySupport = new ScreenHistorySupport(); // todo convert to bean
+    }
+
+    public void setDisableSavingScreenHistory(boolean disableSavingScreenHistory) {
+        this.disableSavingScreenHistory = disableSavingScreenHistory;
     }
 
     public void setUi(AppUI ui) {
@@ -714,7 +720,21 @@ public class WebWindowManager extends WindowManager {
             }
         });
 
-        WebComponentsHelper.setActions(vWindow, actions);
+        vWindow.addActionHandler(new com.vaadin.event.Action.Handler() {
+            @Override
+            public com.vaadin.event.Action[] getActions(Object target, Object sender) {
+                Set<com.vaadin.event.Action> shortcuts = actions.keySet();
+                return shortcuts.toArray(new com.vaadin.event.Action[0]);
+            }
+
+            @Override
+            public void handleAction(com.vaadin.event.Action action, Object sender, Object target) {
+                Runnable runnable = actions.get(action);
+                if (runnable != null) {
+                    runnable.run();
+                }
+            }
+        });
 
         boolean dialogParamsSizeUndefined = openType.getHeight() == null && openType.getWidth() == null;
 
@@ -948,16 +968,11 @@ public class WebWindowManager extends WindowManager {
                     messages.getMainMessage("discardChangesInTabs"),
                     MessageType.WARNING,
                     new Action[]{
-                            new AbstractAction(messages.getMainMessage("closeTabs")) {
-                                {
-                                    icon = icons.get(CubaIcon.DIALOG_OK);
-                                }
+                            new BaseAction("closeTabs")
+                                    .withIcon(icons.get(CubaIcon.DIALOG_OK))
+                                    .withCaption(messages.getMainMessage("closeTabs"))
+                                    .withHandler(e -> closeTabsForce(windowsToClose)),
 
-                                @Override
-                                public void actionPerform(com.haulmont.cuba.gui.components.Component component) {
-                                    closeTabsForce(windowsToClose);
-                                }
-                            },
                             new DialogAction(Type.CANCEL, Status.PRIMARY)
                     }
             );
@@ -982,7 +997,7 @@ public class WebWindowManager extends WindowManager {
     }
 
     /**
-     * Close all screens in the main window (browser tab) this WindowManager belongs to.
+     * Close all screens in the main window (browser tab) this WindowManagerImpl belongs to.
      */
     public void closeAll() {
         List<Map.Entry<Window, WindowOpenInfo>> entries = new ArrayList<>(windowOpenMode.entrySet());
@@ -1180,9 +1195,9 @@ public class WebWindowManager extends WindowManager {
                 ));
 
         vWindow.addAction(new ShortcutListenerDelegate("Enter", ShortcutAction.KeyCode.ENTER, null)
-                .withHandler((sender, target) -> {
-                    vWindow.close();
-                }));
+                .withHandler((sender, target) ->
+                        vWindow.close()
+                ));
 
         VerticalLayout layout = new VerticalLayout();
         layout.setStyleName("c-app-message-dialog");
@@ -1579,7 +1594,7 @@ public class WebWindowManager extends WindowManager {
     }
 
     public void createTopLevelWindow(WindowInfo windowInfo) {
-        ui.beforeTopLevelWindowInit();
+        ui.beforeTopLevelWindowInit(); // todo move to UI / App
 
         String template = windowInfo.getTemplate();
 
@@ -1588,8 +1603,7 @@ public class WebWindowManager extends WindowManager {
         Map<String, Object> params = Collections.emptyMap();
         if (template != null) {
             //noinspection unchecked
-            topLevelWindow = (Window.TopLevelWindow) createWindow(windowInfo, OpenType.NEW_TAB, params,
-                    LayoutLoaderConfig.getWindowLoaders(), true);
+            topLevelWindow = (Window.TopLevelWindow) createWindow(windowInfo, OpenType.NEW_TAB, params, true);
         } else {
             Class screenClass = windowInfo.getScreenClass();
             if (screenClass != null) {
@@ -1890,7 +1904,7 @@ public class WebWindowManager extends WindowManager {
                 actions.add(analyzeAction);
             }
 
-            return actions.toArray(new com.vaadin.event.Action[actions.size()]);
+            return actions.toArray(new com.vaadin.event.Action[0]);
         }
 
         @Override

@@ -20,7 +20,7 @@ package com.haulmont.cuba.gui.app.core.credits;
 import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.gui.ComponentsHelper;
 import com.haulmont.cuba.gui.DialogOptions;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.export.ByteArrayDataProvider;
 import com.haulmont.cuba.gui.export.ExportDisplay;
@@ -101,7 +101,7 @@ public class CreditsFrame extends AbstractFrame {
                     @Override
                     public void actionPerform(Component component) {
                         openWindow("thirdpartyLicenseWindow",
-                                   WindowManager.OpenType.DIALOG,
+                                   WindowManagerImpl.OpenType.DIALOG,
                                    ParamsMap.of("licenseText", item.getLicense()));
                     }
                 });

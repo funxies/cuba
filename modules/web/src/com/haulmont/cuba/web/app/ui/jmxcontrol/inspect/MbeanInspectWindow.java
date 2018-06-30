@@ -18,7 +18,7 @@
 package com.haulmont.cuba.web.app.ui.jmxcontrol.inspect;
 
 import com.haulmont.bali.util.ParamsMap;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.backgroundwork.BackgroundWorkWindow;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.data.CollectionDatasource;

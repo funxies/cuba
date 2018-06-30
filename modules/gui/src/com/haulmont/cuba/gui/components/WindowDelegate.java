@@ -21,7 +21,7 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.gui.ComponentsHelper;
 import com.haulmont.cuba.gui.GuiDevelopmentException;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.config.WindowConfig;
 import com.haulmont.cuba.gui.config.WindowInfo;
 import com.haulmont.cuba.gui.data.Datasource;
@@ -228,67 +228,67 @@ public class WindowDelegate {
             return window.getDsContext() != null && window.getDsContext().isModified();
     }
 
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openWindow(windowInfo, openType, params);
     }
 
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openWindow(windowInfo, openType);
     }
 
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType) {
         WindowInfo editorScreen = windowConfig.getEditorScreen(item);
         return window.getWindowManager().openEditor(editorScreen, item, openType);
     }
 
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo editorScreen = windowConfig.getEditorScreen(item);
         return window.getWindowManager().openEditor(editorScreen, item, openType, params);
     }
 
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         WindowInfo editorScreen = windowConfig.getEditorScreen(item);
         return window.getWindowManager().openEditor(editorScreen, item, openType, params, parentDs);
     }
 
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openEditor(windowInfo, item, openType, params, parentDs);
     }
 
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openEditor(windowInfo, item, openType, params);
     }
 
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Datasource parentDs) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openEditor(windowInfo, item, openType, parentDs);
     }
 
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openEditor(windowInfo, item, openType);
     }
 
-    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         WindowInfo lookupScreen = windowConfig.getLookupScreen(entityClass);
         return window.getWindowManager().openLookup(lookupScreen, handler, openType);
     }
 
-    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo lookupScreen = windowConfig.getLookupScreen(entityClass);
         return window.getWindowManager().openLookup(lookupScreen, handler, openType, params);
     }
 
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openLookup(windowInfo, handler, openType, params);
     }
 
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return window.getWindowManager().openLookup(windowInfo, handler, openType);
     }

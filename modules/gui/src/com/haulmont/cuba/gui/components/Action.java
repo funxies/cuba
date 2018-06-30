@@ -16,7 +16,7 @@
  */
 package com.haulmont.cuba.gui.components;
 
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.icons.Icons;
 import com.haulmont.cuba.security.entity.ConstraintOperationType;
 
@@ -144,11 +144,11 @@ public interface Action {
     void removePropertyChangeListener(PropertyChangeListener listener);
 
     /**
-     * Indicates that the action can be assigned a {@link WindowManager.OpenType} to open a related screen.
+     * Indicates that the action can be assigned a {@link WindowManagerImpl.OpenType} to open a related screen.
      */
     interface HasOpenType extends Action {
-        WindowManager.OpenType getOpenType();
-        void setOpenType(WindowManager.OpenType openType);
+        WindowManagerImpl.OpenType getOpenType();
+        void setOpenType(WindowManagerImpl.OpenType openType);
     }
 
     /**

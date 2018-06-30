@@ -777,67 +777,67 @@ public class DesktopWindow implements Window, Component.Disposable,
     }
 
     @Override
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openWindow(windowAlias, openType, params);
     }
 
     @Override
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType) {
         return delegate.openWindow(windowAlias, openType);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType) {
         return delegate.openEditor(item, openType);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openEditor(item, openType, params);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         return delegate.openEditor(item, openType, params, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         return delegate.openEditor(windowAlias, item, openType, params, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openEditor(windowAlias, item, openType, params);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Datasource parentDs) {
         return delegate.openEditor(windowAlias, item, openType, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType) {
         return delegate.openEditor(windowAlias, item, openType);
     }
 
     @Override
-    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         return delegate.openLookup(entityClass, handler, openType);
     }
 
     @Override
-    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openLookup(entityClass, handler, openType, params);
     }
 
     @Override
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return delegate.openLookup(windowAlias, handler, openType, params);
     }
 
     @Override
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         return delegate.openLookup(windowAlias, handler, openType);
     }
 
@@ -857,7 +857,7 @@ public class DesktopWindow implements Window, Component.Disposable,
     }
 
     @Override
-    public void setWindowManager(WindowManager windowManager) {
+    public void setWindowManager(WindowManagerImpl windowManager) {
         this.windowManager = (DesktopWindowManager) windowManager;
     }
 

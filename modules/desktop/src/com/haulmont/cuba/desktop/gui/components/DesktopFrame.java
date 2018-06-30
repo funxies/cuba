@@ -25,7 +25,7 @@ import com.haulmont.cuba.desktop.DetachedFrame;
 import com.haulmont.cuba.desktop.sys.DesktopWindowManager;
 import com.haulmont.cuba.gui.ComponentsHelper;
 import com.haulmont.cuba.gui.FrameContext;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.Action;
 import com.haulmont.cuba.gui.config.WindowConfig;
@@ -284,79 +284,79 @@ public class DesktopFrame
     }
 
     @Override
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openWindow(windowInfo, openType, params);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType) {
         WindowInfo editorScreen = windowConfig.getEditorScreen(item);
         return getWindowManager().openEditor(editorScreen, item, openType);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo editorScreen = windowConfig.getEditorScreen(item);
         return getWindowManager().openEditor(editorScreen, item, openType, params);
     }
 
     @Override
-    public Window.Editor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         WindowInfo editorScreen = windowConfig.getEditorScreen(item);
         return getWindowManager().openEditor(editorScreen, item, openType, params, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openEditor(windowInfo, item, openType, params, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openEditor(windowInfo, item, openType, params);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Datasource parentDs) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Datasource parentDs) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openEditor(windowInfo, item, openType, parentDs);
     }
 
     @Override
-    public Window.Editor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType) {
+    public Window.Editor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openEditor(windowInfo, item, openType);
     }
 
     @Override
-    public Window openWindow(String windowAlias, WindowManager.OpenType openType) {
+    public Window openWindow(String windowAlias, WindowManagerImpl.OpenType openType) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openWindow(windowInfo, openType);
     }
 
     @Override
-    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         WindowInfo lookupScreen = windowConfig.getLookupScreen(entityClass);
         return getWindowManager().openLookup(lookupScreen, handler, openType);
     }
 
     @Override
-    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(Class<? extends Entity> entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo lookupScreen = windowConfig.getLookupScreen(entityClass);
         return getWindowManager().openLookup(lookupScreen, handler, openType, params);
     }
 
     @Override
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openLookup(windowInfo, handler, openType, params);
     }
 
     @Override
-    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public Window.Lookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         WindowInfo windowInfo = windowConfig.getWindowInfo(windowAlias);
         return getWindowManager().openLookup(windowInfo, handler, openType);
     }

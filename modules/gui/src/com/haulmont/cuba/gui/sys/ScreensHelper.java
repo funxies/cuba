@@ -15,7 +15,7 @@
  *
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import com.google.common.base.Strings;
 import com.haulmont.bali.util.Dom4j;
@@ -63,6 +63,9 @@ public class ScreensHelper {
 
     @Inject
     protected Metadata metadata;
+
+    @Inject
+    protected LayoutLoaderConfig layoutLoaderConfig;
 
     protected Map<String, String> captionCache = new ConcurrentHashMap<>();
     protected Map<String, Map<String, Object>> availableScreensCache = new ConcurrentHashMap<>();
@@ -172,7 +175,7 @@ public class ScreensHelper {
     }
 
     protected boolean isComponentElement(Element element) {
-        Class<? extends ComponentLoader> loader = LayoutLoaderConfig.getWindowLoaders().getLoader(element.getName());
+        Class<? extends ComponentLoader> loader = layoutLoaderConfig.getLoader(element.getName());
         return !isExclusion(element) &&
                 (loader != null
                         || isAction(element)

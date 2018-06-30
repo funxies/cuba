@@ -26,5 +26,5 @@ public interface WindowContext extends FrameContext {
     /**
      * How the window is opened.
      */
-    WindowManager.OpenType getOpenType();
+    WindowManagerImpl.OpenType getOpenType();
 }

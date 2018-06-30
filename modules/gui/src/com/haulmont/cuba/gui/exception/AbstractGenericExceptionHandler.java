@@ -18,7 +18,7 @@
 package com.haulmont.cuba.gui.exception;
 
 import com.haulmont.cuba.core.global.RemoteException;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import javax.annotation.Nullable;
@@ -31,7 +31,7 @@ import java.util.List;
  *
  * <p>If you need to handle a specific exception, create a descendant of this class,
  * pass handled exception class names into constructor, implement
- * {@link #doHandle(String, String, Throwable, WindowManager)} method and annotate the class with {@code @Component}.
+ * {@link #doHandle(String, String, Throwable, WindowManagerImpl)} method and annotate the class with {@code @Component}.
  *
  */
 public abstract class AbstractGenericExceptionHandler implements GenericExceptionHandler {
@@ -43,7 +43,7 @@ public abstract class AbstractGenericExceptionHandler implements GenericExceptio
     }
 
     @Override
-    public boolean handle(Throwable exception, WindowManager windowManager) {
+    public boolean handle(Throwable exception, WindowManagerImpl windowManager) {
         //noinspection unchecked
         List<Throwable> list = ExceptionUtils.getThrowableList(exception);
         for (Throwable throwable : list) {
@@ -87,8 +87,8 @@ public abstract class AbstractGenericExceptionHandler implements GenericExceptio
      * @param message   exception message
      * @param throwable exception instance. Can be null if the exception occured on the server side and this
      *                  exception class isn't accessible by the client.
-     * @param windowManager WindowManager instance
+     * @param windowManager WindowManagerImpl instance
      */
     protected abstract void doHandle(String className, String message, @Nullable Throwable throwable,
-                                     WindowManager windowManager);
+                                     WindowManagerImpl windowManager);
 }

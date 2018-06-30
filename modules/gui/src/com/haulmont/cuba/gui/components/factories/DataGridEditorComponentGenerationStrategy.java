@@ -25,7 +25,7 @@ import com.haulmont.cuba.core.entity.CategoryAttribute;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
 import com.haulmont.cuba.gui.dynamicattributes.DynamicAttributesGuiTools;
@@ -96,7 +96,7 @@ public class DataGridEditorComponentGenerationStrategy extends AbstractComponent
             PickerField.LookupAction lookupAction =
                     (PickerField.LookupAction) pickerField.getActionNN(PickerField.LookupAction.NAME);
             // Opening lookup screen in another mode will close editor
-            lookupAction.setLookupScreenOpenType(WindowManager.OpenType.DIALOG);
+            lookupAction.setLookupScreenOpenType(WindowManagerImpl.OpenType.DIALOG);
             // In case of adding special logic for lookup screen opened from DataGrid editor
             lookupAction.setLookupScreenParams(ParamsMap.of("dataGridEditor", true));
             boolean actionsByMetaAnnotations = ComponentsHelper.createActionsByMetaAnnotations(pickerField);

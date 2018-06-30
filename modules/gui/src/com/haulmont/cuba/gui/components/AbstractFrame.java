@@ -23,7 +23,7 @@ import com.haulmont.cuba.core.global.Configuration;
 import com.haulmont.cuba.core.global.DevelopmentException;
 import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.gui.FrameContext;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.data.Datasource;
 import com.haulmont.cuba.gui.data.DsContext;
 import com.haulmont.cuba.gui.icons.Icons;
@@ -65,7 +65,7 @@ public class AbstractFrame implements Frame, Frame.Wrapper, Component.Wrapper, O
      * Called by the framework after creation of all components and before showing the screen.
      * <br> Override this method and put initialization logic here.
      * @param params parameters passed from caller's code, usually from
-     * {@link #openWindow(String, com.haulmont.cuba.gui.WindowManager.OpenType)} and similar methods, or set in
+     * {@link #openWindow(String, WindowManagerImpl.OpenType)} and similar methods, or set in
      *               {@code screens.xml} for this registered screen
      */
     public void init(Map<String, Object> params) {
@@ -460,69 +460,69 @@ public class AbstractFrame implements Frame, Frame.Wrapper, Component.Wrapper, O
     }
 
     @Override
-    public AbstractWindow openWindow(String windowAlias, WindowManager.OpenType openType, Map<String, Object> params) {
+    public AbstractWindow openWindow(String windowAlias, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return (AbstractWindow) frame.openWindow(windowAlias, openType, params);
     }
 
     @Override
-    public AbstractWindow openWindow(String windowAlias, WindowManager.OpenType openType) {
+    public AbstractWindow openWindow(String windowAlias, WindowManagerImpl.OpenType openType) {
         return (AbstractWindow) frame.openWindow(windowAlias, openType);
     }
 
     @Override
-    public AbstractEditor openEditor(Entity item, WindowManager.OpenType openType) {
+    public AbstractEditor openEditor(Entity item, WindowManagerImpl.OpenType openType) {
         return (AbstractEditor) frame.openEditor(item, openType);
     }
 
     @Override
-    public AbstractEditor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public AbstractEditor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return (AbstractEditor) frame.openEditor(item, openType,params);
     }
 
     @Override
-    public AbstractEditor openEditor(Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public AbstractEditor openEditor(Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         return (AbstractEditor) frame.openEditor(item, openType, params, parentDs);
     }
 
     @Override
-    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params, Datasource parentDs) {
+    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params, Datasource parentDs) {
         return (AbstractEditor) frame.openEditor(windowAlias, item, openType, params, parentDs);
     }
 
     @Override
-    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Map<String, Object> params) {
+    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return (AbstractEditor) frame.openEditor(windowAlias, item, openType, params);
     }
 
     @Override
-    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType, Datasource parentDs) {
+    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType, Datasource parentDs) {
         return (AbstractEditor) frame.openEditor(windowAlias, item, openType, Collections.emptyMap(), parentDs);
     }
 
     @Override
-    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManager.OpenType openType) {
+    public AbstractEditor openEditor(String windowAlias, Entity item, WindowManagerImpl.OpenType openType) {
         return (AbstractEditor) frame.openEditor(windowAlias, item, openType, Collections.emptyMap());
     }
 
     @Override
-    public AbstractLookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public AbstractLookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         return (AbstractLookup) frame.openLookup(entityClass, handler, openType);
     }
 
     @Override
-    public AbstractLookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManager.OpenType openType, Map<String, Object> params) {
+    public AbstractLookup openLookup(Class<? extends Entity>  entityClass, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return (AbstractLookup) frame.openLookup(entityClass, handler, openType, params);
     }
 
     @Override
     public AbstractLookup openLookup(
             String windowAlias, Window.Lookup.Handler handler,
-            WindowManager.OpenType openType, Map<String, Object> params) {
+            WindowManagerImpl.OpenType openType, Map<String, Object> params) {
         return (AbstractLookup) frame.openLookup(windowAlias, handler, openType, params);
     }
 
     @Override
-    public AbstractLookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManager.OpenType openType) {
+    public AbstractLookup openLookup(String windowAlias, Window.Lookup.Handler handler, WindowManagerImpl.OpenType openType) {
         return (AbstractLookup) frame.openLookup(windowAlias, handler, openType, Collections.emptyMap());
     }
 

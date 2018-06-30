@@ -16,7 +16,7 @@
  */
 package com.haulmont.cuba.gui.components;
 
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
 
 import javax.annotation.Nullable;
@@ -90,8 +90,8 @@ public interface TokenList<V> extends Field<V>, Component.BelongToFrame, Compone
     Position getPosition();
     void setPosition(Position position);
 
-    WindowManager.OpenType getLookupOpenMode();
-    void setLookupOpenMode(WindowManager.OpenType lookupOpenMode);
+    WindowManagerImpl.OpenType getLookupOpenMode();
+    void setLookupOpenMode(WindowManagerImpl.OpenType lookupOpenMode);
 
     boolean isInline();
     void setInline(boolean inline);

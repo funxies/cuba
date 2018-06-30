@@ -15,13 +15,16 @@
  *
  */
 
-package com.haulmont.cuba.gui;
+package com.haulmont.cuba.gui.sys;
 
 import com.haulmont.cuba.client.ClientConfiguration;
 import com.haulmont.cuba.core.config.Config;
 import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Configuration;
 import com.haulmont.cuba.core.sys.AppContext;
+import com.haulmont.cuba.gui.AppConfig;
+import com.haulmont.cuba.gui.ComponentsHelper;
+import com.haulmont.cuba.gui.FrameContext;
 import com.haulmont.cuba.gui.components.Action;
 import com.haulmont.cuba.gui.components.Component;
 import com.haulmont.cuba.gui.components.Frame;

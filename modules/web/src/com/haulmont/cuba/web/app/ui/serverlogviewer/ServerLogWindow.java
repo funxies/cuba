@@ -26,7 +26,7 @@ import com.haulmont.cuba.core.sys.logging.LogArchiver;
 import com.haulmont.cuba.core.sys.logging.LogControlException;
 import com.haulmont.cuba.core.sys.logging.LoggingHelper;
 import com.haulmont.cuba.gui.AppConfig;
-import com.haulmont.cuba.gui.WindowManager.OpenType;
+import com.haulmont.cuba.gui.WindowManagerImpl.OpenType;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.components.PickerField.LookupAction;
 import com.haulmont.cuba.gui.components.Timer;

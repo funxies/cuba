@@ -36,7 +36,7 @@ import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.core.global.filter.DenyingClause;
 import com.haulmont.cuba.core.global.filter.QueryFilter;
 import com.haulmont.cuba.gui.ComponentsHelper;
-import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManagerImpl;
 import com.haulmont.cuba.gui.WindowManagerProvider;
 import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.components.*;
@@ -126,7 +126,7 @@ public class FilterDelegateImpl implements FilterDelegate {
     protected GlobalConfig globalConfig;
     protected AddConditionHelper addConditionHelper;
     protected ThemeConstants theme;
-    protected WindowManager windowManager;
+    protected WindowManagerImpl windowManager;
 
     protected Filter filter;
     protected FilterEntity adHocFilter;
@@ -1138,7 +1138,7 @@ public class FilterDelegateImpl implements FilterDelegate {
             public void actionPerform(Component component) {
                 WindowInfo windowInfo = windowConfig.getWindowInfo("filterSelect");
                 FilterSelectWindow window = (FilterSelectWindow) windowManager.openWindow(windowInfo,
-                        WindowManager.OpenType.DIALOG,
+                        WindowManagerImpl.OpenType.DIALOG,
                         ParamsMap.of("filterEntities", filterEntities));
 
                 window.addCloseListener(actionId -> {
@@ -2196,7 +2196,7 @@ public class FilterDelegateImpl implements FilterDelegate {
                 if (!getMainMessage("filter.adHocFilter").equals(filterEntity.getName())) {
                     params.put("filterName", filterEntity.getName());
                 }
-                final SaveFilterWindow window = (SaveFilterWindow) windowManager.openWindow(windowInfo, WindowManager.OpenType.DIALOG, params);
+                final SaveFilterWindow window = (SaveFilterWindow) windowManager.openWindow(windowInfo, WindowManagerImpl.OpenType.DIALOG, params);
                 window.addCloseListener(actionId -> {
                     if (Window.COMMIT_ACTION_ID.equals(actionId)) {
                         String filterName = window.getFilterName();
@@ -2256,7 +2256,7 @@ public class FilterDelegateImpl implements FilterDelegate {
                             .collect(Collectors.toList())
             );
 
-            final SaveFilterWindow window = (SaveFilterWindow) windowManager.openWindow(windowInfo, WindowManager.OpenType.DIALOG, params);
+            final SaveFilterWindow window = (SaveFilterWindow) windowManager.openWindow(windowInfo, WindowManagerImpl.OpenType.DIALOG, params);
             window.addCloseListener(actionId -> {
                 if (Window.COMMIT_ACTION_ID.equals(actionId)) {
                     String filterName = window.getFilterName();
@@ -2307,7 +2307,7 @@ public class FilterDelegateImpl implements FilterDelegate {
             params.put("filter", filter);
             params.put("conditions", conditions);
 
-            FilterEditor window = (FilterEditor) windowManager.openWindow(windowInfo, WindowManager.OpenType.DIALOG, params);
+            FilterEditor window = (FilterEditor) windowManager.openWindow(windowInfo, WindowManagerImpl.OpenType.DIALOG, params);
             window.addCloseListener(actionId -> {
                 if (Window.COMMIT_ACTION_ID.equals(actionId)) {
                     conditions = window.getConditions();
@@ -2516,7 +2516,7 @@ public class FilterDelegateImpl implements FilterDelegate {
                 params.put("entityClass", datasource.getMetaClass().getJavaClass().getName());
                 params.put("query", datasource.getQuery());
                 filter.getFrame().openWindow("saveSetInFolder",
-                        WindowManager.OpenType.DIALOG,
+                        WindowManagerImpl.OpenType.DIALOG,
                         params);
             }
         }
@@ -2596,7 +2596,7 @@ public class FilterDelegateImpl implements FilterDelegate {
                     filterEntity.setFolder(saveFolder(filterEntity.getFolder()));
                     setFilterEntity(filterEntity);
                 }
-            }, WindowManager.OpenType.THIS_TAB);
+            }, WindowManagerImpl.OpenType.THIS_TAB);
         }
     }
 

@@ -16,8 +16,8 @@
  */
 package com.haulmont.cuba.gui.config;
 
-import com.haulmont.cuba.core.global.AppBeans;
-import com.haulmont.cuba.core.global.Scripting;
+import com.haulmont.cuba.gui.Screen;
+import com.haulmont.cuba.gui.UIController;
 import org.dom4j.Element;
 
 import javax.annotation.Nullable;
@@ -29,15 +29,25 @@ import javax.annotation.Nullable;
  */
 public class WindowInfo {
 
-    private String id;
-    private Element descriptor;
-    private Class screenClass;
-    private ScreenAgent screenAgent;
+    private final String id;
 
-    public WindowInfo(String id, Element descriptor, @Nullable ScreenAgent screenAgent) {
+    private final Element descriptor;
+    private final WindowAttributesProvider windowAttributesProvider;
+    private final String screenClass; // todo use String here
+
+    public WindowInfo(String id, WindowAttributesProvider windowAttributesProvider, @Nullable Element descriptor) {
         this.id = id;
+        this.windowAttributesProvider = windowAttributesProvider;
         this.descriptor = descriptor;
-        this.screenAgent = screenAgent;
+        this.screenClass = null;
+    }
+
+    public WindowInfo(String id, WindowAttributesProvider windowAttributesProvider,
+                      String screenClass) {
+        this.id = id;
+        this.windowAttributesProvider = windowAttributesProvider;
+        this.screenClass = screenClass;
+        this.descriptor = null;
     }
 
     /**
@@ -48,45 +58,54 @@ public class WindowInfo {
     }
 
     /**
-     * Screen template path as set in <code>screens.xml</code>
-     */
-    public String getTemplate() {
-        return descriptor.attributeValue("template");
-    }
-
-    /**
      * Screen class as set in <code>screens.xml</code>
      */
     @Nullable
-    public Class getScreenClass() {
+    public Class<? extends Screen> getScreenClass() {
         if (screenClass == null) {
-            String className = descriptor.attributeValue("class");
-            if (className != null) {
-                Scripting scripting = AppBeans.get(Scripting.NAME);
-                screenClass = scripting.loadClass(className);
-            }
+            return null;
         }
 
-        return screenClass;
-    }
-
-    public boolean getMultipleOpen() {
-        return Boolean.parseBoolean(descriptor.attributeValue("multipleOpen"));
+        return windowAttributesProvider.getScreenClass(this);
     }
 
     /**
      * The whole XML element of the screen as set in <code>screens.xml</code>
      */
+    @Nullable
     public Element getDescriptor() {
         return descriptor;
     }
 
-    public void setDescriptor(Element descriptor) {
-        this.descriptor = descriptor;
+    /**
+     * Screen template path as set in <code>screens.xml</code>
+     */
+    public String getTemplate() {
+        if (screenClass != null) {
+            UIController design = screenClass.getAnnotation(UIController.class);
+            return design.template();
+        }
+        if (descriptor != null) {
+            return descriptor.attributeValue("template");
+        }
+
+        throw new IllegalStateException("Neither screen class nor descriptor is set");
     }
 
-    public ScreenAgent getScreenAgent() {
-        return screenAgent;
+    /**
+     * JavaDoc
+     */
+    public boolean getMultipleOpen() {
+        if (screenClass != null) {
+            UIController design = screenClass.getAnnotation(UIController.class);
+            return design.multipleOpen();
+        }
+
+        if (descriptor != null) {
+            return Boolean.parseBoolean(descriptor.attributeValue("multipleOpen"));
+        }
+
+        throw new IllegalStateException("Neither screen class nor descriptor is set");
     }
 
     @Override

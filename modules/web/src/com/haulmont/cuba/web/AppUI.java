@@ -19,6 +19,7 @@ package com.haulmont.cuba.web;
 
 import com.haulmont.cuba.client.ClientUserSession;
 import com.haulmont.cuba.core.global.*;
+import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.sys.TestIdManager;
 import com.haulmont.cuba.gui.components.Window.TopLevelWindow;
 import com.haulmont.cuba.gui.events.sys.UiEventsMulticaster;
@@ -114,6 +115,8 @@ public class AppUI extends CubaUI
 
     protected TopLevelWindow topLevelWindow;
 
+    protected WindowManager windowManager;
+
     public AppUI() {
     }
 
@@ -165,6 +168,14 @@ public class AppUI extends CubaUI
 
     protected App createApplication() {
         return AppBeans.getPrototype(App.NAME);
+    }
+
+    public WindowManager getWindowManager() {
+        return windowManager;
+    }
+
+    public void setWindowManager(WindowManager windowManager) {
+        this.windowManager = windowManager;
     }
 
     @Override

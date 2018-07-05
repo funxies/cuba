@@ -19,9 +19,11 @@ package com.haulmont.cuba.web;
 
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.WindowManager;
+import com.haulmont.cuba.gui.WindowManager.OpenMode;
 import com.haulmont.cuba.gui.components.Frame;
 import com.haulmont.cuba.gui.components.Window;
 import com.haulmont.cuba.gui.config.WindowConfig;
+import com.haulmont.cuba.gui.config.WindowInfo;
 import com.haulmont.cuba.gui.executors.IllegalConcurrentAccessException;
 import com.haulmont.cuba.gui.settings.SettingsClient;
 import com.haulmont.cuba.gui.theme.ThemeConstants;
@@ -30,13 +32,17 @@ import com.haulmont.cuba.security.app.UserSessionService;
 import com.haulmont.cuba.security.global.LoginException;
 import com.haulmont.cuba.security.global.NoUserSessionException;
 import com.haulmont.cuba.security.global.UserSession;
+import com.haulmont.cuba.web.app.ui.demo.DemoScreen;
 import com.haulmont.cuba.web.auth.WebAuthConfig;
 import com.haulmont.cuba.web.controllers.ControllerUtils;
 import com.haulmont.cuba.web.exception.ExceptionHandlers;
 import com.haulmont.cuba.web.log.AppLog;
 import com.haulmont.cuba.web.security.events.SessionHeartbeatEvent;
 import com.haulmont.cuba.web.settings.WebSettingsClient;
-import com.haulmont.cuba.web.sys.*;
+import com.haulmont.cuba.web.sys.AppCookies;
+import com.haulmont.cuba.web.sys.BackgroundTaskManager;
+import com.haulmont.cuba.web.sys.LinkHandler;
+import com.haulmont.cuba.web.sys.WebWindowManagerImpl;
 import com.vaadin.server.AbstractClientConnector;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.server.VaadinSession;
@@ -291,7 +297,14 @@ public abstract class App {
      */
     public void createTopLevelWindow(AppUI ui) {
         WindowManager wm = beanLocator.getPrototype(WindowManager.NAME);
-        // todo write code here with WindowManager
+        // todo set UI to WM
+        ui.setWindowManager(wm);
+
+        String topLevelWindowId = routeTopLevelWindowId();
+        WindowInfo windowInfo = windowConfig.getWindowInfo(topLevelWindowId);
+
+        DemoScreen screen = wm.create(DemoScreen.class, OpenMode.TOP_LEVEL);
+        wm.show(screen);
 
         /*WebWindowManagerImpl wm = AppBeans.getPrototype(WebWindowManagerImpl.NAME);
         wm.setUi(ui);
